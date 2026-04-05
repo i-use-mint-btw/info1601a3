@@ -1,0 +1,1 @@
+export const DEADLOCK_ASSETS_API_URL = `https://assets.deadlock-api.com`
