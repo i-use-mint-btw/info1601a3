@@ -1,28 +1,27 @@
 @font-face {
-  font-family: 'DeadLockFont';
-  src: url('../assets/DecoturaICG.ttf'); 
-  font-weight: normal;
-  font-style: normal;
-}
-* {
-    margin: 0px;
+    font-family: 'DeadLockFont';
+    src: url('../assets/DecoturaICG.ttf');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /*
     Color Pallete here: https://www.color-hex.com/color-palette/1069181
 */
 
-body{
+*,
+*::before,
+*::after {
     font-family: 'DeadLockFont';
     letter-spacing: 1.5px;
+    padding: 0;
+    margin: 0;
 }
 
-nav{
+header {
+    width: 100vw;
     height: 50px;
-    display: flex;
-    justify-content: center;
     padding-top: 25px;
-    gap: 30px;
     background-color: #222021e7;
 }
 
@@ -55,7 +54,19 @@ button{
     transform: 0.5s;
 }
 
-nav a{
+nav {
+    width: 80%;
+    margin: 0 auto;
+}
+
+nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.navigation-link {
     text-decoration: none;
     color: #efdebf;
 }
