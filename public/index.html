@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +12,14 @@
 </head>
 <style>
     body {
-    color: #efdebf;
-    background-image: url("assets/Background_Buildings.png");
-    background-repeat: no-repeat;
-    height: auto;
-    background-size: auto;
+        color: #efdebf;
+        background-image: url("./assets/Background_Buildings.png");
+        background-repeat: no-repeat;
+        background-size: auto;
     }
-    div, .main{
+
+    div,
+    .main {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -30,12 +32,18 @@
         }
     }
 </style>
+
 <body>
-    <nav>
-        <h3><a href="items.html">Items</a></h3>
-        <h3><a href="heroes.html">Heroes</a></h3>
-        <h3><a href="login.html">Sign Up/Log In</a></h3>
-    </nav>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="navigation-link" href="./pages/items.html">Items</a></li>
+                <li><a class="navigation-link" href="./pages/heroes.html">Heroes</a></li>
+                <li><a class="navigation-link" href="./pages/login.html">Log In / Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    
     <main style="margin-top: 150px;" class="main">
         <div style="width: 40%; gap: 15px;">
             <img src="assets/(Classic) LOGO_Filled.png" width="350px">
@@ -51,4 +59,5 @@
     </main>
     </div>
 </body>
+
 </html>
