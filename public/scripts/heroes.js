@@ -5,19 +5,20 @@ async function fetchHeroData() {
   let response = await fetch(`${DEADLOCK_ASSETS_API_URL}/v2/heroes`);
   heroes = await response.json();
   
-  displayHeroes(heroes); 
+  displayHeroes(heroes, ""); 
 }
 
-function displayHeroes(heroes) {
-  console.log(heroes);
-
+function displayHeroes(heroes, filter) {
   const insertCards = document.querySelector(".cards");
   let html = "";
 
   //add in paragraph if you'd like <p style="color: rgba(255, 255, 255, 0.7); margin-top: 10px">${h.name}</p>
 
   heroes.forEach(h => {
-    if(!h.in_development && h.name != "Kali") {
+    h.name = h.name.toLowerCase();
+    filter = filter.toLowerCase();
+
+    if(!h.in_development && h.name != "kali" && h.name.includes(filter)) {
       html += `
       <div>
         <img src="${h.images.top_bar_vertical_image}" 
@@ -31,5 +32,12 @@ function displayHeroes(heroes) {
 
   insertCards.innerHTML = html;
 }
+
+const inputBox = document.getElementById("heroSearch");
+
+inputBox.addEventListener("input", () => {
+  console.log(inputBox.value);
+  displayHeroes(heroes, inputBox.value);
+});
 
 fetchHeroData();
