@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heroes</title>
-    <link rel="stylesheet" href="style.css"></link>
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+    </link>
+    <script src="./scripts/heroes.js" defer></script>
 </head>
 <style>
     body {
-    color: #efdebf;
-    background-image: url("../assets/Background_Buildings.png");
-    background-repeat: no-repeat;
-    height: auto;
-    background-size: auto;
+        color: #efdebf;
+        background-image: url("../assets/Background_Buildings.png");
+        background-repeat: no-repeat;
+        height: auto;
+        background-size: auto;
     }
-    div, .main{
+
+    div,
+    .main {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -27,42 +30,52 @@
             background-size: cover;
         }
     }
-    .main-heroes-div{
-      gap: 15px; 
-      width: 80%; 
-      background-color: #222021e7;
-      border-radius: 25px;
+
+    .main-heroes-div {
+        gap: 15px;
+        width: 80%;
+        background-color: #222021e7;
+        border-radius: 25px;
     }
-    .cards{
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      gap: 40px;
-      flex-wrap: wrap;
-    } 
-    img{
-      width: 90px; 
-      border-radius: 15px; 
-      border-style: solid;
-      transition: transform 0.3s ease;
+
+    .cards {
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        flex-wrap: wrap;
     }
-    img:hover{
-      cursor: pointer;
-      transform: scale(1.1);
+
+    img {
+        width: 90px;
+        border-radius: 15px;
+        border-style: solid;
+        transition: transform 0.3s ease;
+    }
+
+    img:hover {
+        cursor: pointer;
+        transform: scale(1.1);
     }
 </style>
+
 <body>
-    <nav>
-        <h3>Items</h3>
-        <h3>Heroes</h3>
-        <h3>Sign Up/Log In</h3>
-    </nav>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="navigation-link" href="./items.html">Items</a></li>
+                <li><a class="navigation-link" href="../index.html">Home</a></li>
+                <li><a class="navigation-link" href="./login.html">Log In / Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main style="margin-top: 80px;" class="main">
         <div class="main-heroes-div">
 
             <h1>Heroes</h1>
             <div style="display: flex; flex-direction: row;">
-              <input><button>Search</button>
+                <input><button>Search</button>
             </div>
 
             <div class="cards"></div>
@@ -70,5 +83,6 @@
     </main>
     </div>
 </body>
-<script src="../scripts/heroes.js" type="module"></script>
+<script src="heroes.js" type="module"></script>
+
 </html>
