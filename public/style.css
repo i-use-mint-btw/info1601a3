@@ -18,11 +18,14 @@
     margin: 0;
 }
 
+/*Could make navbar transparent but then it looks bad during scrolling*/
 header {
     width: 100vw;
     height: 50px;
     padding-top: 25px;
-    background-color: #222021e7;
+    background-color: #222021;
+    position: sticky;
+    top: 0;
 }
 
 input{

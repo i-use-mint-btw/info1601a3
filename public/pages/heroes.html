@@ -13,7 +13,7 @@
     body {
         color: #efdebf;
         background-image: url("../assets/Background_Buildings.png");
-        background-repeat: no-repeat;
+        background-repeat: repeat;
         background-size: auto;
         overflow-x: hidden;
     }
@@ -24,12 +24,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    }
-
-    @media (min-width: 1400px) {
-        body {
-            background-size: cover;
-        }
     }
 
     .main-heroes-div {
@@ -58,6 +52,18 @@
     img:hover {
         cursor: pointer;
         transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        body {
+            background-size: cover;
+        }
+        .cards{
+            gap: 15px;
+        }
+        .main-heroes-div{
+            width: 90%;
+        }
     }
 </style>
 
