@@ -28,10 +28,37 @@ nav{
 
 input{
     background-color: #ddd;
-    color: #444;
+    color: #222021;
     border-radius: 8px;
 }
 
+button{
+    border-style: none;
+    border-radius: 12px;
+    padding: 8px;
+    width: 80px;
+    transform: 0.3s ease all;
+    color: #222021;
+    background-color: #fff5f6;
+    cursor: pointer;
+}
+
+.primary-btn{
+    background-color:#efdebf;
+    font-size: medium;
+    font-weight: 600;
+    margin: 6px;
+}
+
+.primary-btn:hover{
+    transform: scale(1.1);
+    transform: 0.5s;
+}
+
+nav a{
+    text-decoration: none;
+    color: #efdebf;
+}
 
 a{
     text-decoration: none;
