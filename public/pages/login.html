@@ -7,6 +7,7 @@
     <title>Login</title>
     <link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
     <link rel="stylesheet" href="../style.css">
+    <script src="../scripts/login.js" defer type="module"></script>
     </link>
 </head>
 
@@ -86,22 +87,22 @@
     </header>
 
     <main class="main">
-        <div class="login-container">
+        <form class="login-container">
             <h2>Login</h2>
 
             <label for="username">Enter your Username:</label>
-            <input type="text" placeholder="Username" id="username" />
+            <input type="text" placeholder="Username" id="usernameInput" />
 
             <label for="password">Enter your Password:</label>
-            <input type="password" placeholder="Password" id="password" />
+            <input type="password" placeholder="Password" id="passwordInput" />
 
-            <button>Login</button>
+            <button type="submit" id="loginButton">Login</button>
 
             <p style="text-align: center;">
                 Don't have an account?
                 <a href="./signup.html">Sign up</a>
             </p>
-        </div>
+        </form>
     </main>
 </body>
 
