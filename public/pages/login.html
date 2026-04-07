@@ -37,11 +37,19 @@
 
     .login-container {
         margin-top: 150px;
-        width: 300px;
-        gap: 18px;
-        padding: 25px;
+        min-width: 300px;
+        max-width: 400px;
+        padding: 30px;
+        padding-right: 35px;
         background: rgba(0, 0, 0, 0.6);
         border-radius: 10px;
+    }
+
+    .login-container > form {
+        width: 90%;
+        margin: 0 auto;
+        display: grid;
+        gap: 20px;
     }
 
     input {
@@ -87,22 +95,24 @@
     </header>
 
     <main class="main">
-        <form class="login-container">
-            <h2>Login</h2>
+        <div class="login-container">
+            <form action="">
+                <h2>Login</h2>
 
-            <label for="email">Enter your Email:</label>
-            <input type="text" placeholder="Email" id="emailInput" />
+                <label for="email">Enter your Email:</label>
+                <input type="text" placeholder="Email" id="emailInput" />
 
-            <label for="password">Enter your Password:</label>
-            <input type="password" placeholder="Password" id="passwordInput" />
+                <label for="password">Enter your Password:</label>
+                <input type="password" placeholder="Password" id="passwordInput" />
 
-            <button type="submit" id="loginButton">Login</button>
+                <button type="submit" id="loginButton">Login</button>
 
-            <p style="text-align: center;">
-                Don't have an account?
-                <a href="./signup.html">Sign up</a>
-            </p>
-        </form>
+                <p style="text-align: center;">
+                    Don't have an account?
+                    <a href="./signup.html">Sign up</a>
+                </p>
+            </form>
+        </div>
     </main>
 </body>
 
