@@ -14,7 +14,10 @@ window.showMore = function(index) {
 
   if(heroes[index].description.role == undefined || heroes[index].description.playstyle == undefined) {
     modalContent.innerHTML = `
-    <h1 style="font-size: 3rem;">${heroes[index].name}</h1>
+    <div style="display: flex; flex-direction: row; justify-content: space-between; width: 97%;">
+      <h1 style="font-size: 3rem;">${heroes[index].name}</h1><span class="close">&times;</span>
+    </div> 
+    
       <div style="display: flex; flex-direction: row; justify-items: flex-start; align-items: flex-start; margin: 0px; margin-top: 15px;">
           <p style="padding-right: 5%; font-size: 1.2rem;">${heroes[index].description.lore}</p>
           <img src="${heroes[index].images.top_bar_vertical_image}" style="height:100%; margin-right: 20px;">
@@ -24,7 +27,10 @@ window.showMore = function(index) {
   
   else {
   modalContent.innerHTML = `
-   <h1 style="font-size: 3rem;">${heroes[index].name}</h1>
+   <div style="display: flex; flex-direction: row; justify-content: space-between; width: 97%;">
+    <h1 style="font-size: 3rem;">${heroes[index].name}</h1><span class="close">&times;</span>
+  </div> 
+
    <p>${heroes[index].description.role}</p>
    <p>${heroes[index].description.playstyle}</p>
     <div class="heroLore">
@@ -33,7 +39,14 @@ window.showMore = function(index) {
     </div>
   `;
   }
+
+  const span = document.querySelector(".close");
+  span.onclick = () => {
+    modal.style.display = "none";
+  };
 }
+
+
 
 window.onclick = function(event) {
   if(event.target == modal) {

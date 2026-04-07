@@ -107,6 +107,19 @@ a{
     width: 60%;
     }
 
+.close {
+  color: #aaaaaa;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 hr {
   border: none;
   height: 8px;
