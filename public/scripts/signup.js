@@ -1,15 +1,16 @@
-import { login } from "./auth.js";
+import { register } from "./auth.js";
 
-document.getElementById("loginButton").addEventListener("click", (e) => {
+document.getElementById("signupButton").addEventListener("click", (e) => {
     // TODO: validate email and password with regex or something
     e.preventDefault()
 
+    const usernameInput = document.getElementById("usernameInput")
     const emailInput = document.getElementById("emailInput")
     const passwordInput = document.getElementById("passwordInput")
 
-    login(emailInput.value, passwordInput.value)
+    register(usernameInput.value, emailInput.value, passwordInput.value)
         .catch(e, () => {
-            console.error(`Failed to login user: ${emailInput.value}`)
+            console.error(`Failed to login user: ${usernameInput.value}`)
             console.error(`Error: ${error.code}, message: ${error.message}`)
         })
 });

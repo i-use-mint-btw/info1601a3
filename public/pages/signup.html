@@ -7,6 +7,7 @@
     <title>Sign Up</title>
     <link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
     <link rel="stylesheet" href="../style.css">
+    <script src="../scripts/signup.js" defer type="module"></script>
     </link>
 </head>
 
@@ -43,7 +44,7 @@
         border-radius: 10px;
     }
 
-    label{
+    label {
         text-align: right;
     }
 
@@ -80,15 +81,15 @@
             <h2>Sign Up</h2>
 
             <label for="username">Create a Username:</label>
-            <input type="text" id="username" placeholder="Username"/>
+            <input type="text" placeholder="Username" id="usernameInput" />
 
             <label for="email">Enter an Email Address:</label>
-            <input type="email" id="email" placeholder="Email"/>
+            <input type="email" placeholder="Email" id="emailInput" />
 
             <label for="password">Create a Password:</label>
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" id="passwordInput" />
 
-            <button class="primary-btn">Sign Up</button>
+            <button class="primary-btn" id="signupButton">Sign Up</button>
 
             <p style="text-align: center;">
                 Already have an account?

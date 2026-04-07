@@ -2,6 +2,7 @@ import {
     signOut,
     onAuthStateChanged,
     signInWithEmailAndPassword,
+    createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 import { user, auth, setUser } from "./globals.js"
 
@@ -13,20 +14,19 @@ onAuthStateChanged(auth, u => {
     }
 });
 
-async function register(email, password) {
-    try {
-        const credentials = createUserWithEmailAndPassword(auth, email, password)
-    } catch (e) {
-        console.error(e);
-    }
+export async function register(username, email, password) {
+    createUserWithEmailAndPassword(auth, email, password)
+        .then(() => console.log(`successfully registered as ${email}`))
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(errorCode, errorMessage)
+        });
 }
 
 export async function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            console.log(`successfully signed in as ${email}`)
-            const user = userCredential.user;
-        })
+        .then(() => console.log(`successfully logged in as ${email}`))
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
