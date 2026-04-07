@@ -69,6 +69,7 @@
         color: #efdebf;
         cursor: pointer;
         font-size: 14px;
+        text-decoration: underline;
     }
 </style>
 
@@ -88,14 +89,17 @@
         <div class="login-container">
             <h2>Login</h2>
 
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
+            <label for="username">Enter your Username:</label>
+            <input type="text" placeholder="Username" id="username" />
+
+            <label for="password">Enter your Password:</label>
+            <input type="password" placeholder="Password" id="password" />
 
             <button>Login</button>
 
             <p style="text-align: center;">
                 Don't have an account?
-                <a href="#">Sign up</a>
+                <a href="./signup.html">Sign up</a>
             </p>
         </div>
     </main>

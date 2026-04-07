@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sign Up</title>
     <link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
     <link rel="stylesheet" href="../style.css">
     </link>
@@ -34,13 +34,17 @@
         }
     }
 
-    .login-container {
+    .signup-container {
         margin-top: 150px;
         width: 300px;
         gap: 18px;
         padding: 25px;
         background: rgba(0, 0, 0, 0.6);
         border-radius: 10px;
+    }
+
+    label{
+        text-align: right;
     }
 
     input {
@@ -51,24 +55,11 @@
         outline: none;
     }
 
-    button {
-        padding: 10px;
-        background-color: #efdebf;
-        color: black;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    button:hover {
-        opacity: 0.9;
-    }
-
     a {
         color: #efdebf;
         cursor: pointer;
         font-size: 14px;
+        text-decoration: underline;
     }
 </style>
 
@@ -85,17 +76,23 @@
     </header>
 
     <main class="main">
-        <div class="login-container">
-            <h2>Login</h2>
+        <div class="signup-container">
+            <h2>Sign Up</h2>
 
-            <input type="text" placeholder="Username" />
+            <label for="username">Create a Username:</label>
+            <input type="text" id="username" placeholder="Username"/>
+
+            <label for="email">Enter an Email Address:</label>
+            <input type="email" id="email" placeholder="Email"/>
+
+            <label for="password">Create a Password:</label>
             <input type="password" placeholder="Password" />
 
-            <button>Login</button>
+            <button class="primary-btn">Sign Up</button>
 
             <p style="text-align: center;">
-                Don't have an account?
-                <a href="#">Sign up</a>
+                Already have an account?
+                <a href="./login.html" style="text-decoration: underline;">Log in</a>
             </p>
         </div>
     </main>
