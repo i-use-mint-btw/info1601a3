@@ -91,11 +91,12 @@ a{
     height: 100%; 
     overflow: auto; 
     background-color: rgba(0,0,0,0.4); 
-    }
+}
 
 .modal-content{
-    background-color: #efdebf;
-    color: black;
+    background-color: #1a1819;
+    color: #efdebf;
+    border: 1px black;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

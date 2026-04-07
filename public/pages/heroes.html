@@ -54,6 +54,18 @@
         transform: scale(1.1);
     }
 
+    .heroLore{
+        display: flex; 
+        flex-direction: row; 
+        justify-items: flex-start; 
+        align-items: flex-start;
+        margin: 0px;
+        margin-top: 15px;
+    }
+    .heroLore p {
+        font-size: 1.2rem;
+    }
+
     @media (max-width: 768px) {
         body {
             background-size: cover;
@@ -63,6 +75,15 @@
         }
         .main-heroes-div{
             width: 85%;
+        }
+        .heroLore{
+            flex-direction: column;
+        }
+        .heroLore p {
+            font-size: .8rem;
+        }
+        .heroLore img {
+            display: none;
         }
     }
 </style>

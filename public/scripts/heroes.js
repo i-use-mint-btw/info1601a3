@@ -27,8 +27,8 @@ window.showMore = function(index) {
    <h1 style="font-size: 3rem;">${heroes[index].name}</h1>
    <p>${heroes[index].description.role}</p>
    <p>${heroes[index].description.playstyle}</p>
-    <div style="display: flex; flex-direction: row; justify-items: flex-start; align-items: flex-start; margin: 0px; margin-top: 15px;">
-        <p style="padding-right: 5%; font-size: 1.2rem;">${heroes[index].description.lore}</p>
+    <div class="heroLore">
+        <p style="padding-right: 5%;">${heroes[index].description.lore}</p>
         <img src="${heroes[index].images.top_bar_vertical_image}" style="height:100%; margin-right: 20px;">
     </div>
   `;
