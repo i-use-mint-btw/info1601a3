@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heroes</title>
+    <title>Items</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
     </link>
@@ -26,17 +26,13 @@
         justify-content: center;
     }
 
-    @media (min-width: 1400px) {
-        body {
-            background-size: cover;
-        }
-    }
-
     .main-items-div {
         gap: 15px;
         width: 80%;
         background-color: #222021e7;
         border-radius: 25px;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
     }
 
     .cards {
@@ -54,9 +50,61 @@
         transition: transform 0.3s ease;
     }
 
-    img:hover {
+    .sorting-select-controls{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label{
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+
+    select{
+        background-color: #ddd;
+        color: #222021e7;
+        font-size: 1rem;
+        border-radius: 8px;
+        padding: 10px; 
+    }
+
+    .item-card:hover {
         cursor: pointer;
         transform: scale(1.1);
+    }
+
+    .itemDesc{
+        display: flex; 
+        flex-direction: row; 
+        justify-items: flex-start; 
+        align-items: flex-start;
+        margin: 0px;
+        margin-top: 15px;
+    }
+    .itemDesc p {
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            background-size: cover;
+        }
+        .cards{
+            gap: 15px;
+        }
+        .main-heroes-div{
+            width: 85%;
+        }
+        .itemDesc{
+            flex-direction: column;
+        }
+        .itemDesc p {
+            font-size: .8rem;
+        }
+        .itemDesc img {
+            display: none;
+        }
     }
 </style>
 
@@ -66,13 +114,43 @@
             <ul>
                 <li><a class="navigation-link" href="./heroes.html">Heroes</a></li>
                 <li><a class="navigation-link" href="../index.html">Home</a></li>
+                <li><a class="navigation-link" href="./builds.html">Builds</a></li>
                 <li><a class="navigation-link" href="./login.html">Log In / Sign Up</a></li>
             </ul>
         </nav>
     </header>
 
-    <main style="margin-top: 80px;" class="main">
+    <main style="margin-top: 80px;" class="main" >
         <div class="main-items-div">
+
+            <h1 style="font-size: 4rem; margin-top: 20px;">Items</h1>
+            <div style="display: flex; flex-direction: column; margin-bottom: 2rem;">
+                <input id="itemSearch" placeholder="Search By Name" style="height: 20px; width: 120px; padding: 10px;">
+                <div class="sorting-select-controls">
+                    <label for="item-Category">Sort By Item Category:</label>
+                    <select id="item-Category">
+                        <option>Spirit</option>
+                        <option>Vitality</option>
+                        <option>Weapon</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="sorting-select-controls">
+        
+            </div>
+            
+            <div id="modal" class="modal-class">
+                <div class="modal-content"></div>
+            </div>
+            <div class="cards">
+                <div class="item-card">
+                    <img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+                    <p>Silence Wave</p>
+                </div>
+                </div>
+
+            </div>
         </div>
     </main>
 </body>
