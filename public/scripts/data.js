@@ -1,15 +1,90 @@
-import { getFirestore, collection, getDoc, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-import { app } from "./globals.js";
+import { auth, db } from "./globals.js";
+import { collection, getDoc, addDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
-const db = getFirestore(app);
+const buildCol = collection(db, "builds")
 
-// try {
-//   const docRef = await addDoc(collection(db, "users"), {
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815
-//   });
-//   console.log("Document written with ID: ", docRef.id);
-// } catch (e) {
-//   console.error("Error adding document: ", e);
+export async function getBuilds(renderFun) {
+    const buildSnapshot = await getDocs(buildCol);
+    const buildList = buildSnapshot.docs.map(doc => doc.data())
+    const name = await getUsername()
+    renderFun(buildList, await getUsername())
+}
+
+// /** @param {string} name **/
+// export async function getBuildByName(name, renderFun) {
+//     const buildSnapshot = await getDoc(buildCol)
+//     return buildSnapshot.data()
 // }
+
+// build = {
+//     createdBy: auth.currentUser.uid,
+//     buildID: "build-1",
+//     hero: { id: 1, name: "Mage" },
+//     items: [{ id: 101, name: "Sword" }],
+//     createdAt: new Date(),
+//     isPrivate: false
+// }
+
+/** @param {Build} build **/
+export async function createBuild(build) {
+    try {
+        await addDoc(buildCol, build);
+    } catch (e) {
+        console.error("Error when trying to create build: ", e);
+    }
+}
+/** @returns {Promise<boolean>} **/
+export async function deleteReview(auth, buildID) {
+    const buildDoc = await getDoc(buildCol);
+
+    if (buildDoc.exists() && buildDoc.data().userID === auth.currentUser.uid) {
+        await deleteDoc(buildDoc);
+        console.log("Build deleted successfully");
+        return true;
+    } else {
+        console.log("Build not found or you don't have permission to delete it");
+        return false;
+    }
+}
+
+export async function createUser(id, username) {
+    try {
+        await addDoc(collection(db, "users"), { id, username })
+    } catch (e) {
+        console.error('Failed to create user', e)
+    }
+}
+
+export async function getUsername() {
+    try {
+        const userSnapshot = await getDocs(collection(db, "users"))
+        const user = userSnapshot.docs.find(doc => doc.data().id === auth.currentUser.uid)
+        return user.data().username
+    } catch (e) {
+        console.error('Failed to get username', e)
+    }
+}
+
+// The following is exactly why typescript is my goat
+
+/**
+ * @typedef {Object} Hero
+ * @property {number|string} id
+ * @property {string} name
+ */
+
+/**
+ * @typedef {Object} Item
+ * @property {number|string} id
+ * @property {string} name
+ */
+
+/**
+ * @typedef {Object} Build
+ * @property {number|string} createdBy
+ * @property {number|string} buildID
+ * @property {Hero} hero
+ * @property {Item[]} items
+ * @property {Date} createdAt
+ * @property {boolean} isPrivate
+ */
