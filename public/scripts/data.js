@@ -34,7 +34,7 @@ export async function createBuild(build) {
     }
 }
 /** @returns {Promise<boolean>} **/
-export async function deleteReview(auth, buildID) {
+export async function deleteBuild(auth, buildID) {
     const buildDoc = await getDoc(buildCol);
 
     if (buildDoc.exists() && buildDoc.data().userID === auth.currentUser.uid) {
