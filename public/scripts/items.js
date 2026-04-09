@@ -21,15 +21,23 @@ async function fetchItems() {
 
   items = [spirit, vitality, weapon]
 
-  renderItems(itemCategoryList.value);
+  renderItems(itemCategoryList.value, "");
 }
 fetchItems();
 
-itemCategoryList.addEventListener("change", () => {
-  renderItems(itemCategoryList.value);
+const inputBox = document.getElementById("itemSearch");
+
+inputBox.addEventListener("input", () => {
+  renderItems(itemCategoryList.value, inputBox.value);
 });
 
-function renderItems(category) {
+
+itemCategoryList.addEventListener("change", () => {
+  renderItems(itemCategoryList.value, "");
+  inputBox.value = '';
+});
+
+function renderItems(category, filter) {
   let currRender;
   if (category == "Spirit") currRender = items[0];
   else if (category == "Vitality") currRender = items[1];
@@ -40,52 +48,83 @@ function renderItems(category) {
   const tier2 = document.querySelector(".cards-tier-2")
   const tier3 = document.querySelector(".cards-tier-3")
   const tier4 = document.querySelector(".cards-tier-4")
+  let found = [false, false, false, false];
 
-  currRender.every((i, index) => {
-    html += `
+  currRender.forEach((i, index) => {
+    const name = i.name.toLowerCase();
+    const search = filter.toLowerCase();
+    if(i.item_tier == 1 && name.includes(search)) {
+      found[0] = true;
+      html += `
       <div class="item-card" onclick="showMore(${index}, '${i.item_slot_type}')">
         <img src="${i.shop_image}">
         <p>${i.name}</p>
       </div>`;
-
-    if(i.item_tier == 1) return true;
-    if(i.item_tier == 2) return false;
+    }
   });
 
+  if(found[0] == false) document.getElementById("t1H").style.display = "none";
+  else document.getElementById("t1H").style.display = "flex";
   tier1.innerHTML = html;
   html = '';
 
   currRender.forEach((i, index) => {
-    if(i.item_tier == 2) html += `
+    const name = i.name.toLowerCase();
+    const search = filter.toLowerCase();
+    if(i.item_tier == 2 && name.includes(search)) {
+      found[1] = true;
+      html += `
       <div class="item-card" onclick="showMore(${index}, '${i.item_slot_type}')">
         <img src="${i.shop_image}">
         <p>${i.name}</p>
       </div>`;
+    }
   });
 
+  if(found[1] == false) document.getElementById("t2H").style.display = "none";
+  else document.getElementById("t2H").style.display = "flex";
   tier2.innerHTML = html;
   html = '';
 
   currRender.forEach((i, index) => {
-    if(i.item_tier == 3) html += `
+    const name = i.name.toLowerCase();
+    const search = filter.toLowerCase();
+    if(i.item_tier == 3 && name.includes(search)) {
+      found[2] = true;
+      html += `
       <div class="item-card" onclick="showMore(${index}, '${i.item_slot_type}')">
         <img src="${i.shop_image}">
         <p>${i.name}</p>
       </div>`;
+    }
   });
 
+  if(found[2] == false) document.getElementById("t3H").style.display = "none";
+  else document.getElementById("t3H").style.display = "flex";
   tier3.innerHTML = html;
   html = '';
 
   currRender.forEach((i, index) => {
-    if(i.item_tier == 4) html += `
+    const name = i.name.toLowerCase();
+    const search = filter.toLowerCase();
+    if(i.item_tier == 4 && name.includes(search)) {
+      found[3] = true;
+      html += `
       <div class="item-card" onclick="showMore(${index}, '${i.item_slot_type}')">
         <img src="${i.shop_image}">
         <p>${i.name}</p>
       </div>`;
+    }
   });
 
+  if(found[3] == false) document.getElementById("t4H").style.display = "none";
+  else document.getElementById("t4H").style.display = "flex";
   tier4.innerHTML = html;
+
+  if(found[0] == false && found[1] == false && found[2] == false && found[3] == false) {
+    document.getElementById("t1H").style.display = "flex";
+    document.getElementById("t1H").innerHTML = "No Items Found.";
+  } else document.getElementById("t1H").innerHTML = "Tier 1"
 }
 
 //Modal Content
