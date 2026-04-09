@@ -92,6 +92,13 @@
         margin-top: 40px;
     }
 
+    .modal-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     @media (max-width: 768px) {
         body {
             background-size: cover;
@@ -111,6 +118,12 @@
         .itemDesc img {
             display: none;
         }
+    }
+
+    svg {
+    width: 1em !important;
+    height: 1em !important;
+    vertical-align: middle;
     }
 </style>
 
@@ -150,7 +163,7 @@
                 <div class="modal-content"></div>
             </div>
             <div>
-                <h1>Tier 1</h1>
+                <h1 style="margin-top: 0px;">Tier 1</h1>
                     <div class="cards-tier-1 cards">
                         <div class="item-card">
                         <img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">

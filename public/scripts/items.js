@@ -20,15 +20,12 @@ async function fetchItems() {
   weapon.sort((a, b) => a.item_tier - b.item_tier);
 
   items = [spirit, vitality, weapon]
-  console.log(items);
 
   renderItems(itemCategoryList.value);
 }
 fetchItems();
 
 itemCategoryList.addEventListener("change", () => {
-  console.log("changed");
-  console.log(itemCategoryList.value);
   renderItems(itemCategoryList.value);
 });
 
@@ -44,9 +41,9 @@ function renderItems(category) {
   const tier3 = document.querySelector(".cards-tier-3")
   const tier4 = document.querySelector(".cards-tier-4")
 
-  currRender.every(i => {
+  currRender.every((i, index) => {
     html += `
-      <div class="item-card">
+      <div class="item-card" onclick="showMore(${index}, '${i.item_slot_type}')">
         <img src="${i.shop_image}">
         <p>${i.name}</p>
       </div>`;
@@ -58,9 +55,9 @@ function renderItems(category) {
   tier1.innerHTML = html;
   html = '';
 
-  currRender.forEach(i => {
+  currRender.forEach((i, index) => {
     if(i.item_tier == 2) html += `
-      <div class="item-card">
+      <div class="item-card" onclick="showMore(${index}, '${i.item_slot_type}')">
         <img src="${i.shop_image}">
         <p>${i.name}</p>
       </div>`;
@@ -69,9 +66,9 @@ function renderItems(category) {
   tier2.innerHTML = html;
   html = '';
 
-  currRender.forEach(i => {
+  currRender.forEach((i, index) => {
     if(i.item_tier == 3) html += `
-      <div class="item-card">
+      <div class="item-card" onclick="showMore(${index}, '${i.item_slot_type}')">
         <img src="${i.shop_image}">
         <p>${i.name}</p>
       </div>`;
@@ -80,13 +77,66 @@ function renderItems(category) {
   tier3.innerHTML = html;
   html = '';
 
-  currRender.forEach(i => {
+  currRender.forEach((i, index) => {
     if(i.item_tier == 4) html += `
-      <div class="item-card">
+      <div class="item-card" onclick="showMore(${index}, '${i.item_slot_type}')">
         <img src="${i.shop_image}">
         <p>${i.name}</p>
       </div>`;
   });
 
   tier4.innerHTML = html;
+}
+
+//Modal Content
+window.showMore = function(index, slotType) {
+  let itemDetails;
+  if (slotType == "spirit") itemDetails = items[0];
+  else if (slotType == "vitality") itemDetails = items[1];
+  else itemDetails = items[2];
+
+  const modalContent = document.querySelector(".modal-content");
+  const modal = document.getElementById("modal");
+  modal.style.display = "block";
+
+  if(itemDetails[index].description.desc == undefined) {
+    modalContent.innerHTML = `
+      <h1>${itemDetails[index].name}</h1>
+      <div style="display: flex; flex-direction: row; margin-bottom: 20px">
+        <img src="${itemDetails[index].shop_image}" style="height:100%; margin-right: 20px;">
+        <div>
+        <p>Price: ${itemDetails[index].cost}<img style="width: 1em; height: auto; vertical-align: middle; border:none;" src="https://deadlockrank.com/wp-content/sites/deadlock/2025/01/deadlock-soul-icon.png"></p>
+        <p>Item Tier: ${itemDetails[index].item_tier}</p>
+        </div>
+      </div>
+      <span class="close">&times;</span>
+    `;
+  }
+
+  else {
+    modalContent.innerHTML = `
+      <h1 style="font-size: 3rem;">${itemDetails[index].name}</h1>
+      <div style="display: flex; flex-direction: row; margin-bottom: 20px">
+        <img src="${itemDetails[index].shop_image}" style="height:100%; margin-right: 20px;">
+        <div>
+        <p>Price: ${itemDetails[index].cost}<img style="width: 1em; height: auto; vertical-align: middle; border:none;" src="https://deadlockrank.com/wp-content/sites/deadlock/2025/01/deadlock-soul-icon.png"></p>
+        <p>Item Tier: ${itemDetails[index].item_tier}</p>
+        </div>
+      </div>
+      <p style="text-align: center">${itemDetails[index].description.desc}</p>
+      <span class="close">&times;</span>
+    `;
+    }
+  const span = document.querySelector(".close");
+  span.onclick = () => {
+    modal.style.display = "none";
+  };
+}
+
+
+
+window.onclick = function(event) {
+  if(event.target == modal) {
+    modal.style.display = "none";
+  }
 }
