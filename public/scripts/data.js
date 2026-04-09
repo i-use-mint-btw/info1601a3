@@ -6,7 +6,6 @@ const buildCol = collection(db, "builds")
 export async function getBuilds(renderFun) {
     const buildSnapshot = await getDocs(buildCol);
     const buildList = buildSnapshot.docs.map(doc => doc.data())
-    const name = await getUsername()
     renderFun(buildList, await getUsername())
 }
 
@@ -33,6 +32,7 @@ export async function createBuild(build) {
         console.error("Error when trying to create build: ", e);
     }
 }
+
 /** @returns {Promise<boolean>} **/
 export async function deleteBuild(auth, buildID) {
     const buildDoc = await getDoc(buildCol);
@@ -81,6 +81,7 @@ export async function getUsername() {
 
 /**
  * @typedef {Object} Build
+ * @property {string} name
  * @property {number|string} createdBy
  * @property {number|string} buildID
  * @property {Hero} hero
