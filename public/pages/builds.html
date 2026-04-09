@@ -4,13 +4,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Builds</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
     <script src="../scripts/builds.js" defer type="module"></script>
+    <style>
+
+			html,body{
+				margin:0px; 
+			}
+			header{
+				display: flex;
+				flex-direction: row;
+				width: 100dvw;
+			}
+			main{
+				display:flex;
+				flex-direction: row;
+				height: 90dvh;
+			}
+      #builds-list{
+					display: flex;
+					flex-direction: column;
+          width: 325px;
+          border-right: 1px solid #efdebf;
+          background-color: #222021;
+      }
+        #build-details{
+            background-color: green;
+						display: flex;
+						flex-direction: column;
+						flex: 1;
+						align-items: center;
+						justify-content: flex-start;
+        }
+
+				.build-card{
+					padding: 10px;
+					border: 1px solid #efdebf;
+					margin-bottom: 10px;
+					border-radius: 12px;
+					display: flex;
+					flex-direction: column;
+					gap: 10px;
+					width: 300px;
+					margin-right: 10px;
+				}
+
+				.build-items{
+					display: flex;
+					flex-direction: row;
+					max-width: 300px;
+				}
+
+				.hero-icon-container{
+					display: flex;
+					flex: column;
+				}
+
+				.items-icon-container{
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					flex: 1;
+					gap: 10px;
+				}
+
+
+				.preview-box{
+					width: 100%;
+					max-width: 600px;
+					aspect-ratio: 16/9;
+					border: 1px dashed;
+					margin-top:20px;
+					height: auto;
+				}
+
+				img{
+					width: 50px;
+					height: 50px;
+				}
+
+				.create-build-btn{
+					margin-top: auto;
+					padding: 12px;
+					border-radius: 12px;
+					border: 1px solid #efdebf;
+					cursor: pointer;
+					background-color: transparent;
+					color: white;
+				}
+
+
+
+    </style>
 </head>
 
 <body>
-    <h1>Just to test if firestore integration works</h1>
-    <div class="builds-container"></div>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="navigation-link" href="./heroes.html">Heroes</a></li>
+                <li><a class="navigation-link" href="../index.html">Home</a></li>
+                <li><a class="navigation-link" href="./items.html">Items</a></li>
+                <li><a class="navigation-link" href="./login.html">Log In / Sign Up</a></li>
+            </ul>
+        </nav> 
+    </header>
+    
+    <main>
+        <aside id="builds-list">
+					<div class="build-card">
+							<div>
+								<h2>Build Name</h2>
+							</div>
+							<div class="build-items">
+								<div class="hero-icon-container">
+									<img src="https://cdn-icons-png.flaticon.com/512/4011/4011075.png">
+								</div>
+								<div class="item-icons-container">
+									<a href="#">
+										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq-jK3RJPYlkDiCUcX4ZnPiAK4f2N0DSpSHw&s">
+									</a>
+									<a href="#">
+										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq-jK3RJPYlkDiCUcX4ZnPiAK4f2N0DSpSHw&s">
+									</a>
+									<a href="#">
+										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq-jK3RJPYlkDiCUcX4ZnPiAK4f2N0DSpSHw&s">
+									</a>
+								</div>
+							</div>
+					</div>
+					<div class="build-card">
+						<h2>Build Name</h2>
+
+					</div>
+					<div class="build-card">
+						<button class="create-build-btn">Create New Build +</button>
+					</div>
+					
+        </aside>
+        <section id="build-details">
+					<div class="preview-box"></div>
+        </section>
+    </main>
 </body>
 
 </html>
