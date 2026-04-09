@@ -10,9 +10,14 @@
     <script src="../scripts/builds.js" defer type="module"></script>
     <style>
 
-			html,body{
+			body{
 				margin:0px; 
+				color: #efdebf;
+				background-image: url("../assets/Background_Buildings.png");
+				background-repeat: repeat;
+				background-size: auto;
 			}
+
 			header{
 				display: flex;
 				flex-direction: row;
@@ -23,51 +28,66 @@
 				flex-direction: row;
 				height: 90dvh;
 			}
-      #builds-list{
-					display: flex;
-					flex-direction: column;
-          width: 325px;
-          border-right: 1px solid #efdebf;
-          background-color: #222021;
-      }
-        #build-details{
-            background-color: green;
-						display: flex;
-						flex-direction: column;
-						flex: 1;
-						align-items: center;
-						justify-content: flex-start;
-        }
+			#builds-list{
+				display: flex;
+				flex-direction: column;
+				width: 325px;
+				border-right: 1px solid #efdebf;
+			}
+
+			#build-details{
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+				align-items: center;
+				justify-content: flex-start;
+				}
 
 				.build-card{
 					padding: 10px;
 					border: 1px solid #efdebf;
-					margin-bottom: 10px;
 					border-radius: 12px;
 					display: flex;
 					flex-direction: column;
-					gap: 10px;
 					width: 300px;
-					margin-right: 10px;
+					margin-bottom: 5px;
+					cursor: pointer;
+					
+				}
+
+				.build-card:hover{
+					background-color: #111314;
+				}
+
+				.build-card:active{
+					background-color: #111314;
 				}
 
 				.build-items{
 					display: flex;
 					flex-direction: row;
-					max-width: 300px;
+					width: 100%;
+					align-items: center;
 				}
 
 				.hero-icon-container{
 					display: flex;
-					flex: column;
+					flex-direction: row;
+					width: 80px;
+					justify-content: center;
+					align-items: center;
+					flex-shrink: 0;
+					border-right: 2px solid #efdebf;
 				}
 
-				.items-icon-container{
+				.items-icons-container{
 					display: flex;
-					flex-direction: column;
+					flex-direction: row;
+					padding-left: 10px;
+					align-items: center;
 					justify-content: space-between;
 					flex: 1;
-					gap: 10px;
+					height: 100%;
 				}
 
 
@@ -75,24 +95,33 @@
 					width: 100%;
 					max-width: 600px;
 					aspect-ratio: 16/9;
-					border: 1px dashed;
+					border: 4px solid;
+					border-radius: 12px;
 					margin-top:20px;
 					height: auto;
 				}
 
-				img{
+				img {
 					width: 50px;
-					height: 50px;
+					border-style: solid 1px black;
+					transition: transform 0.3s ease;
 				}
 
+				.hero-icon{
+					height: auto;
+				}
+
+
 				.create-build-btn{
-					margin-top: auto;
+					flex:1;
+					width: 100%;
 					padding: 12px;
 					border-radius: 12px;
 					border: 1px solid #efdebf;
 					cursor: pointer;
 					background-color: transparent;
-					color: white;
+					border: none;
+					color: #efdebf;
 				}
 
 
@@ -120,24 +149,29 @@
 							</div>
 							<div class="build-items">
 								<div class="hero-icon-container">
-									<img src="https://cdn-icons-png.flaticon.com/512/4011/4011075.png">
+									<img  class ="hero-icon"src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
 								</div>
-								<div class="item-icons-container">
-									<a href="#">
-										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq-jK3RJPYlkDiCUcX4ZnPiAK4f2N0DSpSHw&s">
-									</a>
-									<a href="#">
-										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq-jK3RJPYlkDiCUcX4ZnPiAK4f2N0DSpSHw&s">
-									</a>
-									<a href="#">
-										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq-jK3RJPYlkDiCUcX4ZnPiAK4f2N0DSpSHw&s">
-									</a>
+								<div class="items-icons-container">
+									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
 								</div>
 							</div>
 					</div>
 					<div class="build-card">
-						<h2>Build Name</h2>
-
+							<div>
+								<h2>Build Name</h2>
+							</div>
+							<div class="build-items">
+								<div class="hero-icon-container">
+									<img  class ="hero-icon"src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
+								</div>
+								<div class="items-icons-container">
+									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+								</div>
+							</div>
 					</div>
 					<div class="build-card">
 						<button class="create-build-btn">Create New Build +</button>
