@@ -385,7 +385,7 @@ form {
 
 .build-card.active {
     background: rgba(255, 255, 255, 0.08);
-    border-left: 3px solid #4ea1ff;
+    border-left: 3px solid 	#72947f;
 }
 
 .preview-box {

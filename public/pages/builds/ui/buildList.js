@@ -27,7 +27,7 @@ export function renderBuildCards(builds) {
 }
 
 window.onBuildCardClick = (index) => {
-    highlightSelected(index);
+    highlightSelected(index+1);
 
     const build = currentBuilds[index];
     renderBuildPreview(build);
