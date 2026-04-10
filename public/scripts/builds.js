@@ -15,6 +15,31 @@ import { DEADLOCK_ASSETS_API_URL } from "./constants.js";
 //     items: [{ id: 101, name: "Sword" }],
 // }
 
+//fetches Items
+let items;
+async function fetchItems() {
+  let response = await fetch(`${DEADLOCK_ASSETS_API_URL}/v2/items/by-slot-type/spirit`);
+  let spirit = await response.json();
+
+  response = await fetch(`${DEADLOCK_ASSETS_API_URL}/v2/items/by-slot-type/vitality`);
+  let vitality = await response.json();
+
+  response = await fetch(`${DEADLOCK_ASSETS_API_URL}/v2/items/by-slot-type/weapon`);
+  let weapon = await response.json();
+  
+  spirit = spirit.filter((item => item.shopable));
+  spirit.sort((a, b) => a.item_tier - b.item_tier);
+  vitality = vitality.filter((item => item.shopable));
+  vitality.sort((a, b) => a.item_tier - b.item_tier);
+  weapon = weapon.filter((item => item.shopable));
+  weapon.sort((a, b) => a.item_tier - b.item_tier);
+
+  items = [spirit, vitality, weapon];
+  console.log(items);
+}
+
+fetchItems();
+
 //Name is unnecessary but would be useful for figuring out bugs
 let buildData = {
     createdAt: Date.now(),
@@ -90,19 +115,23 @@ window.onBuildCardClick = () => {
     // Render that entire build here
 }
 
+//For the modal
 const createBuildModal = document.getElementById("modal-form")
 
+//Opens the "Create Build" modal and loads hero data for the dropdown selector.
 window.showCreateBuildModal = () => {
     createBuildModal.classList.add("show-modal")
     createBuildModal.classList.remove("hide-modal")
     fetchHeroData()
 }
 
+//Closes the "Create Build" modal and resets visibility state.
 window.hideCreateBuildModal = () => {
     createBuildModal.classList.add("hide-modal")
     createBuildModal.classList.remove("show-modal")
 }
 
+//fetch hero data
 let heroes; 
 async function fetchHeroData() {
     let response = await fetch(`${DEADLOCK_ASSETS_API_URL}/v2/heroes`);
@@ -111,7 +140,8 @@ async function fetchHeroData() {
     renderList(heroes);
 }
 
-window.filterItems = function () {
+//Filters heroes further
+window.filterHeroes = function () {
   if (!heroes.length) return;
 
   const value = searchBox.value.toLowerCase();
@@ -137,6 +167,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
+//Renders hero dropdown list UI
 function renderList(list) {
   let html = "";
 
@@ -164,6 +195,7 @@ function renderList(list) {
   });
 }
 
+// Handles selecting a hero from dropdown. Updates input field and stores hero data in build state.
 window.selectHero = function(name) {
   searchBox.value = name;
   let heroData = heroes.filter(hero => hero.name == name);
@@ -177,10 +209,72 @@ window.selectHero = function(name) {
 let dropdown = document.getElementById("dropdownList");
 let searchBox = document.getElementById("searchBox");
 
-searchBox.addEventListener("input", filterItems);
+searchBox.addEventListener("input", filterHeroes);
 
 searchBox.addEventListener("focus", () => {
   if (heroes.length) renderList(heroes);
+});
+
+let spiritItems;
+
+let spiritDropdown = document.getElementById("spiritDropdownList");
+let spiritSearchBox = document.getElementById("spiritSearchBox");
+
+window.filterSpiritItems = function () {
+if (!Array.isArray(spiritItems) || !spiritItems.length) return;
+
+const value = spiritSearchBox.value.toLowerCase();
+
+const filtered = spiritItems.filter(i =>
+    i.name.toLowerCase().includes(value)
+);
+
+renderSpiritList(filtered);
+};
+
+function renderSpiritList(list) {
+    let html = "";
+
+    list.forEach(i => {
+    html += `
+        <div class="dropdown-item" data-name="${i.name}">
+        <img class="hero-carousel-img" src="${i.photoUrl}">
+        <span>${i.name}</span>
+        </div>
+    `;
+    });
+
+    spiritDropdown.innerHTML = html;
+    spiritDropdown.style.display = list.length ? "block" : "none";
+
+    spiritDropdown.querySelectorAll(".dropdown-item").forEach(item => {
+    item.onclick = () => {
+        selectSpirit(item.dataset.name);
+    };
+    });
+}
+
+window.selectSpirit = function (name) {
+spiritSearchBox.value = name;
+
+let itemData = spiritItems.find(i => i.name === name);
+
+spiritDropdown.style.display = "none";
+
+buildData.items.push({
+    uid: Date.now(),
+    type: "spirit",
+    name: itemData.name,
+    photoUrl: itemData.photoUrl
+    });
+};
+
+spiritSearchBox.addEventListener("input", window.filterSpiritItems);
+
+spiritSearchBox.addEventListener("focus", () => {
+    if (Array.isArray(spiritItems) && spiritItems.length) {
+    renderSpiritList(spiritItems);
+    }
 });
 
 /**

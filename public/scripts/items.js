@@ -19,7 +19,8 @@ async function fetchItems() {
   weapon = weapon.filter((item => item.shopable));
   weapon.sort((a, b) => a.item_tier - b.item_tier);
 
-  items = [spirit, vitality, weapon]
+  items = [spirit, vitality, weapon];
+  console.log(items);
 
   renderItems(itemCategoryList.value, "");
 }
