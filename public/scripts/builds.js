@@ -314,7 +314,141 @@ spiritSearchBox.addEventListener("focus", () => {
     }
 });
 
+//Start Rendering and fetching vitality data here
+let vitalityItems;
+await fetchItems().then(() => {
+    vitalityItems = items[1];
+});
 
+let vitalityDropdown = document.getElementById("vitalityDropdownList");
+let vitalitySearchBox = document.getElementById("vitalitySearchBox");
+
+window.filterVitalityItems = function () {
+    if (!Array.isArray(vitalityItems)) return;
+
+    const value = vitalitySearchBox.value.toLowerCase();
+
+    const filtered = vitalityItems.filter(i =>
+        i.name.toLowerCase().includes(value)
+    );
+
+    renderVitalityList(filtered);
+};
+
+function renderVitalityList(list) {
+    let html = "";
+
+    list.forEach(i => {
+    html += `
+        <div class="dropdown-item" data-name="${i.name}">
+        <img class="hero-carousel-img" src="${i.shop_image}">
+        <span>${i.name}</span>
+        </div>
+    `;
+    });
+
+    vitalityDropdown.innerHTML = html;
+    vitalityDropdown.style.display = list.length ? "block" : "none";
+
+    vitalityDropdown.querySelectorAll(".dropdown-item").forEach(item => {
+        item.onclick = () => {
+            selectVitality(item.dataset.name);
+        };
+    });
+}
+
+window.selectVitality = function (name) {
+    vitalitySearchBox.value = name;
+
+    let itemData = vitalityItems.find(i => i.name === name);
+
+    vitalityDropdown.style.display = "none";
+
+    buildData.items.vitality.push({
+        uid: itemData.id,
+        shop_image: itemData.shop_image,
+        name: itemData.name
+    });
+
+    console.log(buildData);
+    updateUnorderedList(buildData.items.vitality, "vitality");
+};
+
+vitalitySearchBox.addEventListener("input", window.filterVitalityItems);
+
+vitalitySearchBox.addEventListener("focus", () => {
+    if (Array.isArray(vitalityItems) && vitalityItems.length) {
+    renderVitalityList(vitalityItems);
+    }
+});
+
+//Start Rendering and fetching weapon data here
+let weaponItems;
+await fetchItems().then(() => {
+    weaponItems = items[2];
+});
+
+let weaponDropdown = document.getElementById("weaponDropdownList");
+let weaponSearchBox = document.getElementById("weaponSearchBox");
+
+window.filterWeaponItems = function () {
+    if (!Array.isArray(weaponItems)) return;
+
+    const value = weaponSearchBox.value.toLowerCase();
+
+    const filtered = weaponItems.filter(i =>
+        i.name.toLowerCase().includes(value)
+    );
+
+    renderWeaponList(filtered);
+};
+
+function renderWeaponList(list) {
+    let html = "";
+
+    list.forEach(i => {
+    html += `
+        <div class="dropdown-item" data-name="${i.name}">
+        <img class="hero-carousel-img" src="${i.shop_image}">
+        <span>${i.name}</span>
+        </div>
+    `;
+    });
+
+    weaponDropdown.innerHTML = html;
+    weaponDropdown.style.display = list.length ? "block" : "none";
+
+    weaponDropdown.querySelectorAll(".dropdown-item").forEach(item => {
+        item.onclick = () => {
+            selectWeapon(item.dataset.name);
+        };
+    });
+}
+
+window.selectWeapon = function (name) {
+    weaponSearchBox.value = name;
+
+    let itemData = weaponItems.find(i => i.name === name);
+
+    weaponDropdown.style.display = "none";
+
+    buildData.items.weapon.push({
+        uid: itemData.id,
+        shop_image: itemData.shop_image,
+        name: itemData.name
+    });
+
+    console.log(buildData);
+    updateUnorderedList(buildData.items.weapon, "weapon");
+};
+
+weaponSearchBox.addEventListener("input", window.filterWeaponItems);
+
+weaponSearchBox.addEventListener("focus", () => {
+    if (Array.isArray(weaponItems) && weaponItems.length) {
+    renderWeaponList(weaponItems);
+    }
+});
 
 /**
  * @typedef {Object} Hero
