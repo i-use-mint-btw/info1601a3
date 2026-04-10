@@ -115,7 +115,15 @@ window.filterItems = function () {
 };
 
 document.addEventListener("click", (e) => {
-  if (!e.target.closest(".dropdown")) {
+  const modal = document.getElementById("modal-form");
+  const dropdownBox = document.querySelector(".dropdown");
+
+  if (e.target === modal) {
+    createBuildModal.classList.add("hide-modal")
+    createBuildModal.classList.remove("show-modal")
+  }
+
+  if (dropdownBox && !dropdownBox.contains(e.target)) {
     dropdown.style.display = "none";
   }
 });
