@@ -90,7 +90,7 @@ function updateList(type) {
     const ul = document.getElementById(`${type}UnorderedList`);
 
     ul.innerHTML = state.build.items[type].map(i => `
-        <li onclick="deleteItem(${i.uid}, '${type}')">
+        <li class="slot" onclick="deleteItem(${i.uid}, '${type}')">
             <img src="${i.shop_image}">
             <p>${i.name}</p>
         </li>

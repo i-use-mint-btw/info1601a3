@@ -177,7 +177,6 @@ form {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-
 }
 
 .slot {
@@ -185,7 +184,8 @@ form {
 	width: 200px;
 	height: 50px;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
+	gap: 5px;
 	border-radius: 10px;
 	cursor: pointer;
 	color: white;
