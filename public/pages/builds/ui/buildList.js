@@ -3,7 +3,11 @@ let currentBuilds = []
 export function renderBuildCards(builds) {
     const container = document.querySelector("#builds-list");
     currentBuilds = builds;
-    let html = ``
+    let html = `
+        <div class="build-card create-build-btn-container" onclick="showCreateBuildModal()">
+            <button class="create-build-btn">Create New Build +</button>
+		</div>
+    `
 
     html += builds.map((build, index) => `
         <div class="build-card" onclick="onBuildCardClick(${index})">
@@ -18,12 +22,6 @@ export function renderBuildCards(builds) {
             </div>
         </div>`
     ).join("");
-
-    html += `
-        <div class="build-card create-build-btn-container" onclick="showCreateBuildModal()">
-            <button class="create-build-btn">Create New Build +</button>
-		</div>
-    `
 
     container.innerHTML = html
 }
