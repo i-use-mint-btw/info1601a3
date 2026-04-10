@@ -128,6 +128,13 @@
 			color: #efdebf;
 		}
 
+		#modal-form{
+			max-height: 80vh;
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+		}
+
 		form {
 			width: 100%;
 		}
@@ -182,6 +189,16 @@
 			padding-right: 4px;
 		}
 
+		.form-buttons-container{
+			margin-top: 10px;
+			display: flex;
+			justify-content: space-between;
+			padding: 10px;
+			position: sticky;
+			bottom:0; 
+			z-index: 100;
+		}
+
 		.form-btn {
 			background-color: #ddd;
 			transition: 0.3s all ease;
@@ -202,6 +219,10 @@
 
 		.slot:hover {
 			background-color: #111314;
+		}
+
+		#close,#save-build{
+			margin: 0 5px;
 		}
 
 		#close:hover {
@@ -234,13 +255,14 @@
 
 		.dropdown-list {
 			position: absolute;
-			width: 70%;
+			width: inherit;
 			max-height: 300px;
 			overflow-y: auto;
 			background: #111;
 			border: 1px solid #efdebf;
 			display: none;
 			z-index: 1000;
+			padding-right: 10px;
 		}
 
 		.dropdown-item {
