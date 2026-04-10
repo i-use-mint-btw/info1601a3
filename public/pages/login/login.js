@@ -1,4 +1,4 @@
-import { login } from "./auth.js";
+import { login } from "../../scripts/auth.js";
 
 document.getElementById("loginButton").addEventListener("click", (e) => {
     // TODO: validate email and password with regex or something
