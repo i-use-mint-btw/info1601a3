@@ -226,10 +226,12 @@
 			border-style: solid;
 			transition: transform 0.3s ease;
 		}
+
 		.dropdown {
 			position: relative;
 			width: 250px;
 		}
+
 		.dropdown-list {
 			position: absolute;
 			width: 70%;
@@ -240,6 +242,7 @@
 			display: none;
 			z-index: 1000;
 		}
+
 		.dropdown-item {
 			display: flex;
 			align-items: center;
@@ -332,14 +335,15 @@
 					<div class="form-row">
 						<label for="heroSelection">Select a Hero:</label>
 						<div class="dropdown">
-						<input type="text" id="searchBox" placeholder="Search..."/>
-						<div id="dropdownList" class="dropdown-list"></div>
+							<input type="text" id="searchBox" placeholder="Search..." />
+							<div id="dropdownList" class="dropdown-list"></div>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="item-column">
 							<h3>Spirit</h3>
-							<input class="form-input" type="text" placeholder="Search Spirit Items" id="spiritSearchBox">
+							<input class="form-input" type="text" placeholder="Search Spirit Items"
+								id="spiritSearchBox">
 							<div class="dropdown-list" id="spiritDropdownList"></div>
 							<ul class="item-slots" id="spiritUnorderedList">
 								<li class="slot">+</li>
@@ -350,7 +354,8 @@
 						</div>
 						<div class="item-column">
 							<h3>Vitality</h3>
-							<input class="form-input" type="text" placeholder="Search Vitality Items" id="vitalitySearchBox">
+							<input class="form-input" type="text" placeholder="Search Vitality Items"
+								id="vitalitySearchBox">
 							<div class="dropdown-list" id="vitalityDropdownList"></div>
 							<ul class="item-slots" id="vitalityUnorderedList">
 								<li class="slot">+</li>
@@ -361,7 +366,8 @@
 						</div>
 						<div class="item-column">
 							<h3>Weapons</h3>
-							<input type="text" class="form-input" placeholder="Search Weapon Items" id="weaponSearchBox">
+							<input type="text" class="form-input" placeholder="Search Weapon Items"
+								id="weaponSearchBox">
 							<div class="dropdown-list" id="weaponDropdownList"></div>
 							<div class="item-slots">
 								<div class="slot">+</div>
