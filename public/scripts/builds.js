@@ -15,6 +15,15 @@ import { DEADLOCK_ASSETS_API_URL } from "./constants.js";
 //     items: [{ id: 101, name: "Sword" }],
 // }
 
+//Name is unnecessary but would be useful for figuring out bugs
+let buildData = {
+    createdAt: Date.now(),
+    userID: "given from userData",
+    buildID: "ofiehnaui9osdhgf1=203",
+    hero: {heroID: 1, name: "Infernus"},
+    items: [{uid: 8129389, name: "Mystic Expansion"}, {uid: 18923819, name: "Close Quarters"}]
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     async function onload() {
         //createBuild(testBuild)
@@ -25,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         alert("only users who are logged in can see this page.")
-        window.location.href = "/pages/login.html"
+        window.location.href = '../pages/login.html'
     }
 
     onAuthStateChanged(auth, onload)
@@ -159,9 +168,10 @@ window.selectHero = function(name) {
   searchBox.value = name;
   let heroData = heroes.filter(hero => hero.name == name);
   dropdown.style.display = "none";
-
-  console.log("Selected Hero ID", heroData[0].id);
-  console.log("Selected hero:", name); //attach to build
+  
+  buildData.hero.heroID = heroData[0].id;
+  buildData.hero.name = heroData[0].name;
+  console.log(buildData);
 };
 
 let dropdown = document.getElementById("dropdownList");
