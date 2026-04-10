@@ -4,15 +4,15 @@ import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
-/** @type {Build} **/
-const testBuild = {
-    buildID: "f9j9ejh9thj9ej09jt9h9etj9ke9tg",
-    createdAt: Date.now(),
-    createdBy: "893y784y83797839773982",
-    isPrivate: false,
-    hero: { id: 1, name: "Mage" },
-    items: [{ id: 101, name: "Sword" }],
-}
+// /** @type {Build} **/
+// const testBuild = {
+//     buildID: "f9j9ejh9thj9ej09jt9h9etj9ke9tg",
+//     createdAt: Date.now(),
+//     createdBy: "893y784y83797839773982",
+//     isPrivate: false,
+//     hero: { id: 1, name: "Mage" },
+//     items: [{ id: 101, name: "Sword" }],
+// }
 
 window.addEventListener('DOMContentLoaded', () => {
     async function onload() {
@@ -28,22 +28,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     onAuthStateChanged(auth, onload)
-})
-
-document.querySelector(".create-build-btn").addEventListener("click", e => {
-    async function onclick() {
-        e.preventDefault()
-
-        try {
-            await createBuild()
-            getBuilds(renderBuildCards)
-        } catch (e) {
-            //TODO: render a fallback ui if the build creation fails
-            console.error("Failed to create a new build")
-        }
-    }
-
-    onclick()
 })
 
 document.querySelector(".build-card").addEventListener("click", () => {
@@ -87,6 +71,18 @@ function createItemPreviewList(items) {
     })
 
     return str
+}
+
+const createBuildModal = document.getElementById("modal-form")
+
+function showCreateBuildModal() {
+    createBuildModal.classList.add("show-modal")
+    createBuildModal.classList.remove("hide-modal")
+}
+
+function hideCreateBuildModal() {
+    createBuildModal.classList.add("hide-modal")
+    createBuildModal.classList.remove("show-modal")
 }
 
 

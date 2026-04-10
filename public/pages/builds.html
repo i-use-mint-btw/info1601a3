@@ -2,274 +2,289 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Builds</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
-    <script src="../scripts/builds.js" defer type="module"></script>
-    <style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Builds</title>
+	<link rel="stylesheet" href="../style.css">
+	<link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
+	<script src="../scripts/builds.js" defer type="module"></script>
+	<style>
+		body {
+			margin: 0px;
+			color: #efdebf;
+			background-image: url("../assets/Background_Buildings.png");
+			background-repeat: repeat;
+			background-size: auto;
+		}
 
-			body{
-				margin:0px; 
-				color: #efdebf;
-				background-image: url("../assets/Background_Buildings.png");
-				background-repeat: repeat;
-				background-size: auto;
-			}
+		header {
+			display: flex;
+			flex-direction: row;
+			width: 100dvw;
+		}
 
-			header{
-				display: flex;
-				flex-direction: row;
-				width: 100dvw;
-			}
-			main{
-				display:flex;
-				flex-direction: row;
-				height: 100%;
-			}
-			#builds-list{
-				display: flex;
-				flex-direction: column;
-				width: 325px;
-				border-right: 1px solid #efdebf;
-			}
+		main {
+			display: flex;
+			flex-direction: row;
+			height: 100%;
+		}
 
-			#build-details{
-				display: flex;
-				flex-direction: column;
-				flex: 1;
-				align-items: center;
-				justify-content: flex-start;
-				}
+		#builds-list {
+			display: flex;
+			flex-direction: column;
+			width: 325px;
+			border-right: 1px solid #efdebf;
+		}
 
-				.build-card{
-					padding: 10px;
-					border: 1px solid #efdebf;
-					border-radius: 12px;
-					display: flex;
-					flex-direction: column;
-					width: 300px;
-					margin-bottom: 5px;
-					cursor: pointer;
-					
-				}
+		#build-details {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			align-items: center;
+			justify-content: flex-start;
+		}
 
-				.build-card:hover{
-					background-color: #111314;
-				}
+		.build-card {
+			padding: 10px;
+			border: 1px solid #efdebf;
+			border-radius: 12px;
+			display: flex;
+			flex-direction: column;
+			width: 300px;
+			margin-bottom: 5px;
+			cursor: pointer;
 
-				.build-card:active{
-					background-color: #111314;
-				}
+		}
 
-				.build-items{
-					display: flex;
-					flex-direction: row;
-					width: 100%;
-					align-items: center;
-				}
+		.build-card:hover {
+			background-color: #111314;
+		}
 
-				.hero-icon-container{
-					display: flex;
-					flex-direction: row;
-					width: 80px;
-					justify-content: center;
-					align-items: center;
-					flex-shrink: 0;
-					border-right: 2px solid #efdebf;
-				}
+		.build-card:active {
+			background-color: #111314;
+		}
 
-				.items-icons-container{
-					display: flex;
-					flex-direction: row;
-					padding-left: 10px;
-					align-items: center;
-					justify-content: space-between;
-					flex: 1;
-					height: 100%;
-				}
+		.build-items {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			align-items: center;
+		}
 
+		.hero-icon-container {
+			display: flex;
+			flex-direction: row;
+			width: 80px;
+			justify-content: center;
+			align-items: center;
+			flex-shrink: 0;
+			border-right: 2px solid #efdebf;
+		}
 
-				.preview-box{
-					width: 100%;
-					max-width: 600px;
-					aspect-ratio: 16/9;
-					border: 4px solid;
-					border-radius: 12px;
-					margin-top:20px;
-					height: auto;
-				}
-
-				img {
-					width: 50px;
-					border-style: solid 1px black;
-					transition: transform 0.3s ease;
-				}
-
-				.hero-icon{
-					height: auto;
-				}
-
-				h2{
-					margin: 5px;
-				}
-
-				.create-build-btn{
-					flex:1;
-					width: 100%;
-					padding: 12px;
-					border-radius: 12px;
-					border: 1px solid #efdebf;
-					cursor: pointer;
-					background-color: transparent;
-					border: none;
-					color: #efdebf;
-				}
-
-				form{
-					width: 100%;
-				}
-
-				.form-input{
-					height: 25px;
-					background-color: #ddd;
-				}
-
-				.form-row{
-					display: flex;
-					flex-direction: row;
-					width: 100%;
-					gap: 15px;
-					margin-bottom: 20px;
-				}
-
-				.add-items{
-					display: flex;
-					flex-direction: row;
-					width: 100%;
-					gap: 20px;
-					margin-bottom: 20px;
-					justify-content: space-evenly;
-					align-items:center; 
-				}
-
-				.item-column{
-					display: flex;
-					flex-direction: column;
-					align-items: flex-start;
-					flex: 1;
-					gap: 10px;
-				}
-
-				.item-slots{
-					display: flex;
-					flex-direction: column;
-					flex-wrap: wrap;
-					
-				}
-
-				.slot{
-					display: flex;
-					width: 200px;
-					height: 50px;
-					align-items: center;
-					justify-content: space-between;
-					border-radius: 10px;
-					cursor: pointer;
-					color: white;
-					padding-right: 4px;
-				}
-
-				.form-btn{
-					background-color: #ddd;
-					transition: 0.3s all ease;
-				}
-
-				.remove-item-button{
-					background:transparent;
-					width: 10px;
-					border: none;
-					color: white;
-					font-size: 2rem;
-					cursor: pointer;
-				}
-
-				.remove-item-button:hover{
-					color: rgb(199, 88, 88);
-				}
-
-				.slot:hover{
-					background-color: #111314;
-				}
-
-				#close:hover{
-					background-color: rgb(199, 88, 88);
-				}
-
-				#save-build:hover{
-					background-color: lightgreen;
-				}
+		.items-icons-container {
+			display: flex;
+			flex-direction: row;
+			padding-left: 10px;
+			align-items: center;
+			justify-content: space-between;
+			flex: 1;
+			height: 100%;
+		}
 
 
-    </style>
+		.preview-box {
+			width: 100%;
+			max-width: 600px;
+			aspect-ratio: 16/9;
+			border: 4px solid;
+			border-radius: 12px;
+			margin-top: 20px;
+			height: auto;
+		}
+
+		img {
+			width: 50px;
+			border-style: solid 1px black;
+			transition: transform 0.3s ease;
+		}
+
+		.hero-icon {
+			height: auto;
+		}
+
+		h2 {
+			margin: 5px;
+		}
+
+		.create-build-btn {
+			flex: 1;
+			width: 100%;
+			padding: 12px;
+			border-radius: 12px;
+			border: 1px solid #efdebf;
+			cursor: pointer;
+			background-color: transparent;
+			border: none;
+			color: #efdebf;
+		}
+
+		form {
+			width: 100%;
+		}
+
+		.form-input {
+			height: 25px;
+			background-color: #ddd;
+		}
+
+		.form-row {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			gap: 15px;
+			margin-bottom: 20px;
+		}
+
+		.add-items {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			gap: 20px;
+			margin-bottom: 20px;
+			justify-content: space-evenly;
+			align-items: center;
+		}
+
+		.item-column {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			flex: 1;
+			gap: 10px;
+		}
+
+		.item-slots {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+
+		}
+
+		.slot {
+			display: flex;
+			width: 200px;
+			height: 50px;
+			align-items: center;
+			justify-content: space-between;
+			border-radius: 10px;
+			cursor: pointer;
+			color: white;
+			padding-right: 4px;
+		}
+
+		.form-btn {
+			background-color: #ddd;
+			transition: 0.3s all ease;
+		}
+
+		.remove-item-button {
+			background: transparent;
+			width: 10px;
+			border: none;
+			color: white;
+			font-size: 2rem;
+			cursor: pointer;
+		}
+
+		.remove-item-button:hover {
+			color: rgb(199, 88, 88);
+		}
+
+		.slot:hover {
+			background-color: #111314;
+		}
+
+		#close:hover {
+			background-color: rgb(199, 88, 88);
+		}
+
+		#save-build:hover {
+			background-color: lightgreen;
+		}
+
+		.hide-modal {
+			display: none;
+		}
+
+		.show-modal {
+			display: block;
+		}
+	</style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a class="navigation-link" href="./heroes.html">Heroes</a></li>
-                <li><a class="navigation-link" href="../index.html">Home</a></li>
-                <li><a class="navigation-link" href="./items.html">Items</a></li>
-                <li><a class="navigation-link" href="./login.html">Log In / Sign Up</a></li>
-            </ul>
-        </nav> 
-    </header>
-    
-    <main>
-        <aside id="builds-list">
-					<div class="build-card">
-							<div>
-								<h2>Build Name</h2>
-							</div>
-							<div class="build-items">
-								<div class="hero-icon-container">
-									<img  class ="hero-icon"src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
-								</div>
-								<div class="items-icons-container">
-									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-								</div>
-							</div>
-					</div>
-					<div class="build-card">
-							<div>
-								<h2>Build Name</h2>
-							</div>
-							<div class="build-items">
-								<div class="hero-icon-container">
-									<img  class ="hero-icon"src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
-								</div>
-								<div class="items-icons-container">
-									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-								</div>
-							</div>
-					</div>
-					<div class="build-card">
-						<button class="create-build-btn">Create New Build +</button>
-					</div>
-					
-        </aside>
+	<header>
+		<nav>
+			<ul>
+				<li><a class="navigation-link" href="./heroes.html">Heroes</a></li>
+				<li><a class="navigation-link" href="../index.html">Home</a></li>
+				<li><a class="navigation-link" href="./items.html">Items</a></li>
+				<li><a class="navigation-link" href="./login.html">Log In / Sign Up</a></li>
+			</ul>
+		</nav>
+	</header>
 
-        <section id="build-details">
-					<div class="preview-box">
-						<h2>Build Name</h2>
+	<main>
+		<aside id="builds-list">
+			<div class="build-card">
+				<div>
+					<h2>Build Name</h2>
+				</div>
+				<div class="build-items">
+					<div class="hero-icon-container">
+						<img class="hero-icon"
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
 					</div>
-        </section>
+					<div class="items-icons-container">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+					</div>
+				</div>
+			</div>
+			<div class="build-card">
+				<div>
+					<h2>Build Name</h2>
+				</div>
+				<div class="build-items">
+					<div class="hero-icon-container">
+						<img class="hero-icon"
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
+					</div>
+					<div class="items-icons-container">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+					</div>
+				</div>
+			</div>
+			<div class="build-card" onclick="showCreateBuildModal()">
+				<button class="create-build-btn">Create New Build +</button>
+			</div>
+
+		</aside>
+
+		<section id="build-details">
+			<div class="preview-box">
+				<h2>Build Name</h2>
+			</div>
+		</section>
 
 		<section id="modal-form" class="modal-class">
 			<div class="modal-content">
@@ -280,7 +295,7 @@
 						<label for="buildName">
 							Create a Build Name:
 						</label>
-						<input type="text"  class="form-input" placeholder="Build Name" id="buildName">
+						<input type="text" class="form-input" placeholder="Build Name" id="buildName">
 					</div>
 					<div class="form-row">
 						<label for="heroSelection">Select a Hero:</label>
@@ -293,15 +308,17 @@
 					<div class="form-row">
 						<div class="item-column">
 							<h3>Spirit</h3>
-							<input  class="form-input" type="text" placeholder="Search Spirit Items">
+							<input class="form-input" type="text" placeholder="Search Spirit Items">
 							<div class="item-slots">
 								<div class="slot">
-									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png"> 
+									<img
+										src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
 									<p>Silence Wave</p>
 									<button class="remove-item-button">-</button>
 								</div>
 								<div class="slot">
-									<img src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png"> 
+									<img
+										src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
 									<p>Silence Wave</p>
 									<button class="remove-item-button">-</button>
 								</div>
@@ -331,14 +348,28 @@
 						</div>
 					</div>
 					<div class="form-buttons-container">
-						<button id="close" class="form-btn"> X</button>
+						<button id="close" class="form-btn" onclick="hideCreateBuildModal()"> X</button>
 						<button id="save-build" class="form-btn">Save Build</button>
 					</div>
 				</form>
 			</div>
 
 		</section>
-    </main>
+	</main>
+	<script>
+		const createBuildModal = document.getElementById("modal-form")
+
+		function showCreateBuildModal() {
+			createBuildModal.classList.add("show-modal")
+			createBuildModal.classList.remove("hide-modal")
+		}
+
+		function hideCreateBuildModal() {
+			createBuildModal.classList.add("hide-modal")
+			createBuildModal.classList.remove("show-modal")
+		}
+
+	</script>
 </body>
 
 </html>

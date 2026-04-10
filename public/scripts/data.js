@@ -9,21 +9,6 @@ export async function getBuilds(renderFun) {
     renderFun(buildList, await getUsername())
 }
 
-// /** @param {string} name **/
-// export async function getBuildByName(name, renderFun) {
-//     const buildSnapshot = await getDoc(buildCol)
-//     return buildSnapshot.data()
-// }
-
-// build = {
-//     createdBy: auth.currentUser.uid,
-//     buildID: "build-1",
-//     hero: { id: 1, name: "Mage" },
-//     items: [{ id: 101, name: "Sword" }],
-//     createdAt: new Date(),
-//     isPrivate: false
-// }
-
 /** @param {Build} build **/
 export async function createBuild(build) {
     try {
