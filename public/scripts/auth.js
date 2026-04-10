@@ -18,7 +18,6 @@ export async function register(username, email, password) {
     }
 }
 
-
 export async function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then(() => {
