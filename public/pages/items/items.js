@@ -1,4 +1,4 @@
-import { DEADLOCK_ASSETS_API_URL } from "./constants.js";
+import { DEADLOCK_ASSETS_API_URL } from "../../scripts/constants.js";
 let spirit, weapon, vitality, items;
 const itemCategoryList = document.getElementById("item-Category");
 

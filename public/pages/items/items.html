@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="./items.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/(Ghostly) MARK_Filled.png">
+    </link>
+    <script src="./items.js" defer type="module"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="navigation-link" href="../../index.html">Home</a></li>
+                <li><a class="navigation-link" href="../items/items.html">Items</a></li>
+                <li><a class="navigation-link" href="../heroes/heroes.html">Heroes</a></li>
+                <li><a class="navigation-link" href="../builds/builds.html">My Builds</a></li>
+                <li><a class="navigation-link" href="../login/login.html">Log in / sign up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top: 80px;" class="main">
+        <div class="main-items-div">
+
+            <h1 style="font-size: 4rem; margin-top: 20px;">Items</h1>
+            <div style="display: flex; flex-direction: column; margin-bottom: 2rem;">
+                <input id="itemSearch" placeholder="Search By Name" style="height: 20px; width: 120px; padding: 10px;">
+                <div class="sorting-select-controls">
+                    <label for="item-Category">Sort By Item Category:</label>
+                    <select id="item-Category">
+                        <option>Spirit</option>
+                        <option>Vitality</option>
+                        <option>Weapon</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="sorting-select-controls">
+
+            </div>
+
+            <div id="modal" class="modal-class">
+                <div class="modal-content"></div>
+            </div>
+            <div>
+                <h1 style="margin-top: 0px;" id="t1H">Tier 1</h1>
+                <div class="cards-tier-1 cards">
+                    <div class="item-card">
+
+                    </div>
+                </div>
+                <h1 id="t2H">Tier 2</h1>
+                <div class="cards-tier-2 cards"></div>
+                <h1 id="t3H">Tier 3</h1>
+                <div class="cards-tier-3 cards"></div>
+                <h1 id="t4H">Tier 4</h1>
+                <div class="cards-tier-4 cards"></div>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>

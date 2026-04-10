@@ -1,9 +1,9 @@
-import { auth } from "./globals.js";
-import { createBuild, getBuilds } from "./data.js"
+import { auth } from "../../scripts/globals.js";
+import { createBuild, getBuilds } from "../../scripts/data.js"
 import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
-import { DEADLOCK_ASSETS_API_URL } from "./constants.js";
+import { DEADLOCK_ASSETS_API_URL } from "../../scripts/constants.js";
 
 // /** @type {Build} **/
 // const testBuild = {

@@ -1,0 +1,115 @@
+ body {
+        color: #efdebf;
+        background-image: url("../../assets/Background_Buildings.png");
+        background-repeat: repeat;
+        background-size: auto;
+        overflow-x: hidden;
+    }
+
+    div,
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-items-div {
+        gap: 15px;
+        width: 80%;
+        background-color: #222021e7;
+        border-radius: 25px;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+    }
+
+    .cards {
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    img {
+        width: 90px;
+        border-radius: 15px;
+        border-style: solid;
+        transition: transform 0.3s ease;
+    }
+
+    .sorting-select-controls{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label{
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+
+    select{
+        background-color: #ddd;
+        color: #222021e7;
+        font-size: 1rem;
+        border-radius: 8px;
+        padding: 10px; 
+    }
+
+    .item-card:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    .itemDesc{
+        display: flex; 
+        flex-direction: row; 
+        justify-items: flex-start; 
+        align-items: flex-start;
+        margin: 0px;
+        margin-top: 15px;
+    }
+    .itemDesc p {
+        font-size: 1.2rem;
+    }
+    
+    h1{
+        font-size: 3rem;
+        margin-bottom: 30px;
+        margin-top: 40px;
+    }
+
+    .modal-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            background-size: cover;
+        }
+        .cards{
+            gap: 15px;
+        }
+        .main-heroes-div{
+            width: 85%;
+        }
+        .itemDesc{
+            flex-direction: column;
+        }
+        .itemDesc p {
+            font-size: .8rem;
+        }
+        .itemDesc img {
+            display: none;
+        }
+    }
+
+    svg {
+    width: 1em !important;
+    height: 1em !important;
+    vertical-align: middle;
+    }

@@ -1,0 +1,267 @@
+body {
+			margin: 0px;
+			color: #efdebf;
+			background-image: url("../../assets/Background_Buildings.png");
+			background-repeat: repeat;
+			background-size: auto;
+		}
+
+		header {
+			display: flex;
+			flex-direction: row;
+			width: 100dvw;
+		}
+
+		main {
+			display: flex;
+			flex-direction: row;
+			height: 100%;
+		}
+
+		#builds-list {
+			display: flex;
+			flex-direction: column;
+			width: 325px;
+			border-right: 1px solid #efdebf;
+		}
+
+		#build-details {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			align-items: center;
+			justify-content: flex-start;
+		}
+
+		.build-card {
+			padding: 10px;
+			border: 1px solid #efdebf;
+			border-radius: 12px;
+			display: flex;
+			flex-direction: column;
+			width: 300px;
+			margin-bottom: 5px;
+			cursor: pointer;
+
+		}
+
+		.build-card:hover {
+			background-color: #111314;
+		}
+
+		.build-card:active {
+			background-color: #111314;
+		}
+
+		.build-items {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			align-items: center;
+		}
+
+		.hero-icon-container {
+			display: flex;
+			flex-direction: row;
+			width: 80px;
+			justify-content: center;
+			align-items: center;
+			flex-shrink: 0;
+			border-right: 2px solid #efdebf;
+		}
+
+		.items-icons-container {
+			display: flex;
+			flex-direction: row;
+			padding-left: 10px;
+			align-items: center;
+			justify-content: space-between;
+			flex: 1;
+			height: 100%;
+		}
+
+
+		.preview-box {
+			width: 100%;
+			max-width: 600px;
+			aspect-ratio: 16/9;
+			border: 4px solid;
+			border-radius: 12px;
+			margin-top: 20px;
+			height: auto;
+		}
+
+		img {
+			width: 50px;
+			border-style: solid 1px black;
+			transition: transform 0.3s ease;
+		}
+
+		.hero-icon {
+			height: auto;
+		}
+
+		h2 {
+			margin: 5px;
+		}
+
+		.create-build-btn {
+			flex: 1;
+			width: 100%;
+			padding: 12px;
+			border-radius: 12px;
+			border: 1px solid #efdebf;
+			cursor: pointer;
+			background-color: transparent;
+			border: none;
+			color: #efdebf;
+		}
+
+		#modal-form{
+			max-height: 80vh;
+			overflow-y: auto;
+			display: hidden;
+			flex-direction: column;
+		}
+
+		form {
+			width: 100%;
+		}
+
+		.form-input {
+			height: 25px;
+			background-color: #ddd;
+		}
+
+		.form-row {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			gap: 15px;
+			margin-bottom: 20px;
+		}
+
+		.add-items {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			gap: 20px;
+			margin-bottom: 20px;
+			justify-content: space-evenly;
+			align-items: center;
+		}
+
+		.item-column {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			flex: 1;
+			gap: 10px;
+		}
+
+		.item-slots {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+
+		}
+
+		.slot {
+			display: flex;
+			width: 200px;
+			height: 50px;
+			align-items: center;
+			justify-content: space-between;
+			border-radius: 10px;
+			cursor: pointer;
+			color: white;
+			padding-right: 4px;
+		}
+
+		.form-buttons-container{
+			margin-top: 10px;
+			display: flex;
+			justify-content: space-between;
+			padding: 10px;
+			position: sticky;
+			bottom:0; 
+			z-index: 100;
+		}
+
+		.form-btn {
+			background-color: #ddd;
+			transition: 0.3s all ease;
+		}
+
+		.remove-item-button {
+			background: transparent;
+			width: 10px;
+			border: none;
+			color: white;
+			font-size: 2rem;
+			cursor: pointer;
+		}
+
+		.remove-item-button:hover {
+			color: rgb(199, 88, 88);
+		}
+
+		.slot:hover {
+			background-color: #111314;
+		}
+
+		#close,#save-build{
+			margin: 0 5px;
+		}
+
+		#close:hover {
+			background-color: rgb(199, 88, 88);
+		}
+
+		#save-build:hover {
+			background-color: lightgreen;
+		}
+
+		.hide-modal {
+			display: none;
+		}
+
+		.show-modal {
+			display: block;
+		}
+
+		.hero-carousel-img {
+			width: 90px;
+			border-radius: 15px;
+			border-style: solid;
+			transition: transform 0.3s ease;
+		}
+
+		.dropdown {
+			position: relative;
+			width: 250px;
+		}
+
+		.dropdown-list {
+			position: absolute;
+			width: inherit;
+			max-height: 300px;
+			overflow-y: auto;
+			background: #111;
+			border: 1px solid #efdebf;
+			display: none;
+			z-index: 1000;
+			padding-right: 10px;
+		}
+
+		.dropdown-item {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 6px;
+			cursor: pointer;
+		}
+
+		.dropdown-item:hover {
+			background: #222;
+		}

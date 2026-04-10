@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Builds</title>
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="./builds.css">
+	<link rel="icon" type="image/x-icon" href="../../assets/(Ghostly) MARK_Filled.png">
+	<script src="./builds.js" defer type="module"></script>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a class="navigation-link" href="../../index.html">Home</a></li>
+				<li><a class="navigation-link" href="../items/items.html">Items</a></li>
+				<li><a class="navigation-link" href="../heroes/heroes.html">Heroes</a></li>
+				<li><a class="navigation-link" href="../builds/builds.html">My Builds</a></li>
+				<li><a class="navigation-link" href="../login/login.html">Log in / sign up</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<aside id="builds-list">
+			<div class="build-card" onclick="onBuildCardClick()">
+				<div>
+					<h2>Build Name</h2>
+				</div>
+				<div class="build-items">
+					<div class="hero-icon-container">
+						<img class="hero-icon"
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
+					</div>
+					<div class="items-icons-container">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+					</div>
+				</div>
+			</div>
+			<div class="build-card">
+				<div>
+					<h2>Build Name</h2>
+				</div>
+				<div class="build-items">
+					<div class="hero-icon-container">
+						<img class="hero-icon"
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
+					</div>
+					<div class="items-icons-container">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+						<img
+							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
+					</div>
+				</div>
+			</div>
+			<div class="build-card" onclick="showCreateBuildModal()">
+				<button class="create-build-btn">Create New Build +</button>
+			</div>
+
+		</aside>
+
+		<section id="build-details">
+			<div class="preview-box">
+				<h2>Build Name</h2>
+			</div>
+		</section>
+
+		<section id="modal-form" class="modal-class">
+			<div class="modal-content">
+				<form>
+					<h2>Create Build</h2>
+
+					<div class="form-row">
+						<label for="buildName">
+							Create a Build Name:
+						</label>
+						<input type="text" class="form-input" placeholder="Build Name" id="buildName">
+					</div>
+					<div class="form-row">
+						<label for="heroSelection">Select a Hero:</label>
+						<div class="dropdown">
+							<input type="text" id="searchBox" placeholder="Search..." />
+							<div id="dropdownList" class="dropdown-list"></div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="item-column">
+							<h3>Spirit</h3>
+							<input class="form-input" type="text" placeholder="Search Spirit Items"
+								id="spiritSearchBox">
+							<div class="dropdown-list" id="spiritDropdownList"></div>
+							<ul class="item-slots" id="spiritUnorderedList">
+							</ul>
+						</div>
+						<div class="item-column">
+							<h3>Vitality</h3>
+							<input class="form-input" type="text" placeholder="Search Vitality Items"
+								id="vitalitySearchBox">
+							<div class="dropdown-list" id="vitalityDropdownList"></div>
+							<ul class="item-slots" id="vitalityUnorderedList">
+						</div>
+						<div class="item-column">
+							<h3>Weapons</h3>
+							<input type="text" class="form-input" placeholder="Search Weapon Items"
+								id="weaponSearchBox">
+							<div class="dropdown-list" id="weaponDropdownList"></div>
+							<div class="item-slots" id="weaponUnorderedList">
+							</div>
+						</div>
+					</div>
+					<div class="form-buttons-container">
+						<button id="close" class="form-btn" onclick="hideCreateBuildModal()"> X</button>
+						<button id="save-build" class="form-btn">Save Build</button>
+					</div>
+				</form>
+			</div>
+
+		</section>
+	</main>
+</body>
+
+</html>
