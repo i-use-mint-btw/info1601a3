@@ -118,22 +118,30 @@ function assembleBuild(user) {
     }
 
     const flattenedItems = [
-        ...state.build.items.spirit.map(i => ({ id: i.uid, type: "spirit" })),
-        ...state.build.items.vitality.map(i => ({ id: i.uid, type: "vitality" })),
-        ...state.build.items.weapon.map(i => ({ id: i.uid, type: "weapon" })),
+        ...state.build.items.spirit.map(i => ({
+            id: i.uid,
+            type: "spirit",
+            photoUrl: i.shop_image
+        })),
+        ...state.build.items.vitality.map(i => ({
+            id: i.uid,
+            type: "vitality",
+            photoUrl: i.shop_image
+        })),
+        ...state.build.items.weapon.map(i => ({
+            id: i.uid,
+            type: "weapon",
+            photoUrl: i.shop_image
+        })),
     ];
-
-    if (flattenedItems.length === 0) {
-        alert("Add at least one item");
-        return null;
-    }
 
     return {
         name: nameInput.value.trim(),
         createdBy: user.uid,
         hero: {
             id: state.build.hero.id,
-            name: state.build.hero.name
+            name: state.build.hero.name,
+            photoUrl: state.build.hero.images?.top_bar_vertical_image // 👈 key line
         },
         items: flattenedItems,
         createdAt: Date.now(),
@@ -146,30 +154,26 @@ document.getElementById("save-build").addEventListener("click", async (e) => {
 
     const user = auth.currentUser;
 
-    if (!user) {
-        alert("You must be logged in");
-        return;
-    }
+    if (!user) return
 
     const build = assembleBuild(user);
 
-    if (!build) return;
+    if (!build) { console.log(build); return };
 
     try {
         await createBuild(build);
 
         console.log("Build saved:", build);
 
-        alert("Build saved successfully!");
-
-        // optional reset
-        resetForm();
+        location.reload()
 
     } catch (err) {
         console.error(err);
         alert("Failed to save build");
     }
 });
+
+document.getElementById("close").addEventListener("click", resetForm)
 
 function resetForm() {
     document.getElementById("buildName").value = "";

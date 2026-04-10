@@ -25,50 +25,7 @@
 	</header>
 
 	<main>
-		<aside id="builds-list">
-			<div class="build-card" onclick="onBuildCardClick()">
-				<div>
-					<h2>Build Name</h2>
-				</div>
-				<div class="build-items">
-					<div class="hero-icon-container">
-						<img class="hero-icon"
-							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
-					</div>
-					<div class="items-icons-container">
-						<img
-							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-						<img
-							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-						<img
-							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-					</div>
-				</div>
-			</div>
-			<div class="build-card">
-				<div>
-					<h2>Build Name</h2>
-				</div>
-				<div class="build-items">
-					<div class="hero-icon-container">
-						<img class="hero-icon"
-							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/heroes/bull_vertical.png">
-					</div>
-					<div class="items-icons-container">
-						<img
-							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-						<img
-							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-						<img
-							src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-					</div>
-				</div>
-			</div>
-			<div class="build-card" onclick="showCreateBuildModal()">
-				<button class="create-build-btn">Create New Build +</button>
-			</div>
-
-		</aside>
+		<aside id="builds-list"></aside>
 
 		<section id="build-details">
 			<div class="preview-box">
@@ -90,7 +47,7 @@
 					<div class="form-row">
 						<label for="heroSelection">Select a Hero:</label>
 						<div class="dropdown">
-							<input type="text" id="searchBox" placeholder="Search..." />
+							<input type="text" id="searchBox" class="form-input" placeholder="Search..." />
 							<div id="dropdownList" class="dropdown-list"></div>
 						</div>
 					</div>
