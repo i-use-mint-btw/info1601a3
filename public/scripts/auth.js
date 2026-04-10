@@ -21,8 +21,8 @@ export async function register(username, email, password) {
 export async function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then(() => {
-            console.log(`successfully logged in as ${email}`)
-            window.location.href = "/pages/builds.html"
+            console.log(`successfully logged in as ${email}!`)
+            window.location.href = "/pages/builds/builds.html"
         })
         .catch((error) => {
             const errorCode = error.code;
