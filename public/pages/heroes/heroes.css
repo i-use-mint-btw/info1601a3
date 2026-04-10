@@ -1,0 +1,82 @@
+    body {
+        color: #efdebf;
+        background-image: url("../../assets/Background_Buildings.png");
+        background-repeat: repeat;
+        background-size: auto;
+        overflow-x: hidden;
+    }
+
+    div,
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-heroes-div {
+        gap: 15px;
+        width: 80%;
+        background-color: #222021e7;
+        border-radius: 25px;
+        margin-bottom: 25px;
+    }
+
+    .cards {
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    img {
+        width: 90px;
+        border-radius: 15px;
+        border-style: solid;
+        transition: transform 0.3s ease;
+    }
+
+    img:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    .heroLore {
+        display: flex;
+        flex-direction: row;
+        justify-items: flex-start;
+        align-items: flex-start;
+        margin: 0px;
+        margin-top: 15px;
+    }
+
+    .heroLore p {
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            background-size: cover;
+        }
+
+        .cards {
+            gap: 15px;
+        }
+
+        .main-heroes-div {
+            width: 85%;
+        }
+
+        .heroLore {
+            flex-direction: column;
+        }
+
+        .heroLore p {
+            font-size: .8rem;
+        }
+
+        .heroLore img {
+            display: none;
+        }
+    }

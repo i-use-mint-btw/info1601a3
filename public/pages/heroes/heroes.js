@@ -1,10 +1,10 @@
-import { DEADLOCK_ASSETS_API_URL } from "./constants.js";
-import { auth , db } from "./globals.js";
-import { 
-  collection, 
-  query, 
-  where, 
-  getDocs 
+import { DEADLOCK_ASSETS_API_URL } from "../../scripts/constants.js";
+import { auth, db } from "../../scripts/globals.js";
+import {
+  collection,
+  query,
+  where,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
 let heroes = [];
@@ -12,15 +12,15 @@ let heroes = [];
 async function fetchHeroData() {
   let response = await fetch(`${DEADLOCK_ASSETS_API_URL}/v2/heroes`);
   heroes = await response.json();
-  displayHeroes(heroes, ""); 
+  displayHeroes(heroes, "");
 }
 
-window.showMore = function(index) {
+window.showMore = function (index) {
   const modalContent = document.querySelector(".modal-content");
   const modal = document.getElementById("modal");
   modal.style.display = "block";
 
-  if(heroes[index].description.role == undefined || heroes[index].description.playstyle == undefined) {
+  if (heroes[index].description.role == undefined || heroes[index].description.playstyle == undefined) {
     modalContent.innerHTML = `
     <div style="display: flex; flex-direction: row; justify-content: space-between; width: 97%;">
       <h1 style="font-size: 3rem;">${heroes[index].name}</h1><span class="close">&times;</span>
@@ -32,9 +32,9 @@ window.showMore = function(index) {
       </div>
     `;
   }
-  
+
   else {
-  modalContent.innerHTML = `
+    modalContent.innerHTML = `
    <div style="display: flex; flex-direction: row; justify-content: space-between; width: 97%;">
     <h1 style="font-size: 3rem;">${heroes[index].name}</h1><span class="close">&times;</span>
   </div> 
@@ -54,8 +54,8 @@ window.showMore = function(index) {
   };
 }
 
-window.onclick = function(event) {
-  if(event.target == modal) {
+window.onclick = function (event) {
+  if (event.target == modal) {
     modal.style.display = "none";
   }
 }
@@ -70,7 +70,7 @@ function displayHeroes(heroes, filter) {
     const name = h.name.toLowerCase();
     const search = filter.toLowerCase();
 
-  if (!h.in_development && name != "kali" && name.includes(search) && h.player_selectable) {
+    if (!h.in_development && name != "kali" && name.includes(search) && h.player_selectable) {
       html += `
       <div onclick="showMore(${index})">
         <img src="${h.images.top_bar_vertical_image}" 
@@ -98,18 +98,18 @@ const heroesRef = collection(db, "heroes");
 let filter = false;
 
 //Querying for Favorited Heroes
-document.getElementById("filterButton").onclick = async function() {
-  if(filter === true) {
+document.getElementById("filterButton").onclick = async function () {
+  if (filter === true) {
     filter = false;
     displayHeroes(heroes, "");
     return;
   } else filter = true;
 
-  if(auth.currentUser == null) {
+  if (auth.currentUser == null) {
     alert("You Must Be Logged In For This Feature!");
     return;
   }
-  
+
   let favorites = [];
 
   const q = query(heroesRef, where("user_id", "==", auth.currentUser.uid));

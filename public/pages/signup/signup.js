@@ -1,4 +1,4 @@
-import { register } from "./auth.js";
+import { register } from "../../scripts/auth.js";
 
 document.getElementById("signupButton").addEventListener("click", (e) => {
     // TODO: validate email and password with regex or something

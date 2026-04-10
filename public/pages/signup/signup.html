@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="./signup.css">
+    <script src="./signup.js" defer type="module"></script>
+    </link>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="navigation-link" href="../../index.html">Home</a></li>
+                <li><a class="navigation-link" href="../items/items.html">Items</a></li>
+                <li><a class="navigation-link" href="../heroes/heroes.html">Heroes</a></li>
+                <li><a class="navigation-link" href="./builds/builds.html">My Builds</a></li>
+                <li><a class="navigation-link" href="./login/login.html">Log in / sign up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="signup-container">
+            <form action="">
+                <h2 style="text-align: center;">Sign Up</h2>
+
+                <label for="username">Create a Username:</label>
+                <input type="text" placeholder="Username" id="usernameInput" />
+
+                <label for="email">Enter an Email Address:</label>
+                <input type="email" placeholder="Email" id="emailInput" />
+
+                <label for="password">Create a Password:</label>
+                <input type="password" placeholder="Password" id="passwordInput" />
+
+                <button class="primary-btn" id="signupButton" style="justify-self: center;">Sign Up</button>
+
+                <p style="text-align: center;">
+                    Already have an account?
+                    <a href="../login/login.html">Log in</a>
+                </p>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+body {
+    color: #efdebf;
+    background-image: url("../../assets/Background_Buildings.png");
+    background-repeat: no-repeat;
+    height: auto;
+    background-size: auto;
+    font-family: sans-serif;
+}
+
+div,
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 1400px) {
+    body {
+        background-size: cover;
+    }
+}
+
+.signup-container {
+    margin-top: 150px;
+    min-width: 300px;
+    max-width: 400px;
+    padding: 30px 35px 30px 30px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+}
+
+.signup-container>form {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+}
+
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+a {
+    color: #efdebf;
+    cursor: pointer;
+    font-size: 0.875rem;
+    text-decoration: underline;
+}
