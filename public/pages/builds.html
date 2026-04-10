@@ -8,8 +8,6 @@
 	<link rel="stylesheet" href="../style.css">
 	<link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
 	<script src="../scripts/builds.js" defer type="module"></script>
-	<link rel="stylesheet" href="../glider.css">
-	<script src="../scripts/glider.js"></script>
 	<style>
 		body {
 			margin: 0px;
@@ -234,8 +232,8 @@
 		}
 		.dropdown-list {
 			position: absolute;
-			width: 100%;
-			max-height: 200px;
+			width: 70%;
+			max-height: 300px;
 			overflow-y: auto;
 			background: #111;
 			border: 1px solid #efdebf;
@@ -343,33 +341,23 @@
 							<h3>Spirit</h3>
 							<input class="form-input" type="text" placeholder="Search Spirit Items" id="spiritSearchBox">
 							<div class="dropdown-list" id="spiritDropdownList"></div>
-							<div class="item-slots">
-								<div class="slot">
-									<img
-										src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-									<p>Silence Wave</p>
-									<button class="remove-item-button">-</button>
-								</div>
-								<div class="slot">
-									<img
-										src="https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png">
-									<p>Silence Wave</p>
-									<button class="remove-item-button">-</button>
-								</div>
-								<div class="slot">+</div>
-								<div class="slot">+</div>
-							</div>
+							<ul class="item-slots" id="spiritUnorderedList">
+								<li class="slot">+</li>
+								<li class="slot">+</li>
+								<li class="slot">+</li>
+								<li class="slot">+</li>
+							</ul>
 						</div>
 						<div class="item-column">
 							<h3>Vitality</h3>
 							<input class="form-input" type="text" placeholder="Search Vitality Items" id="vitalitySearchBox">
 							<div class="dropdown-list" id="vitalityDropdownList"></div>
-							<div class="item-slots">
-								<div class="slot">+</div>
-								<div class="slot">+</div>
-								<div class="slot">+</div>
-								<div class="slot">+</div>
-							</div>
+							<ul class="item-slots" id="vitalityUnorderedList">
+								<li class="slot">+</li>
+								<li class="slot">+</li>
+								<li class="slot">+</li>
+								<li class="slot">+</li>
+							</ul>
 						</div>
 						<div class="item-column">
 							<h3>Weapons</h3>
