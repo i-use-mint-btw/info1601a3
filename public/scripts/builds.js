@@ -44,9 +44,13 @@ fetchItems();
 let buildData = {
     createdAt: Date.now(),
     userID: "given from userData",
-    buildID: "ofiehnaui9osdhgf1=203",
-    hero: {heroID: 1, name: "Infernus"},
-    items: [{uid: 8129389, name: "Mystic Expansion"}, {uid: 18923819, name: "Close Quarters"}]
+    buildID: "",
+    hero: {},
+    items: {
+        spirit: [], 
+        vitality: [],
+        weapon: []
+    }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -215,21 +219,25 @@ searchBox.addEventListener("focus", () => {
   if (heroes.length) renderList(heroes);
 });
 
+//Start Rendering and fetching spirit data here
 let spiritItems;
+await fetchItems().then(() => {
+    spiritItems = items[0];
+});
 
 let spiritDropdown = document.getElementById("spiritDropdownList");
 let spiritSearchBox = document.getElementById("spiritSearchBox");
 
 window.filterSpiritItems = function () {
-if (!Array.isArray(spiritItems) || !spiritItems.length) return;
+    if (!Array.isArray(spiritItems)) return;
 
-const value = spiritSearchBox.value.toLowerCase();
+    const value = spiritSearchBox.value.toLowerCase();
 
-const filtered = spiritItems.filter(i =>
-    i.name.toLowerCase().includes(value)
-);
+    const filtered = spiritItems.filter(i =>
+        i.name.toLowerCase().includes(value)
+    );
 
-renderSpiritList(filtered);
+    renderSpiritList(filtered);
 };
 
 function renderSpiritList(list) {
@@ -238,7 +246,7 @@ function renderSpiritList(list) {
     list.forEach(i => {
     html += `
         <div class="dropdown-item" data-name="${i.name}">
-        <img class="hero-carousel-img" src="${i.photoUrl}">
+        <img class="hero-carousel-img" src="${i.shop_image}">
         <span>${i.name}</span>
         </div>
     `;
@@ -248,25 +256,54 @@ function renderSpiritList(list) {
     spiritDropdown.style.display = list.length ? "block" : "none";
 
     spiritDropdown.querySelectorAll(".dropdown-item").forEach(item => {
-    item.onclick = () => {
-        selectSpirit(item.dataset.name);
-    };
+        item.onclick = () => {
+            selectSpirit(item.dataset.name);
+        };
     });
 }
 
-window.selectSpirit = function (name) {
-spiritSearchBox.value = name;
+window.deleteItem = function(itemUID, type) {
+    const toDelete = document.getElementById(itemUID);
 
-let itemData = spiritItems.find(i => i.name === name);
+    if (!toDelete) return;
 
-spiritDropdown.style.display = "none";
+    buildData.items[type] = buildData.items[type].filter(
+        item => item.uid != itemUID
+    );
 
-buildData.items.push({
-    uid: Date.now(),
-    type: "spirit",
-    name: itemData.name,
-    photoUrl: itemData.photoUrl
+    console.log(buildData);
+
+    toDelete.remove();
+};
+
+function updateUnorderedList(currItems, itemType) {
+    const type = document.getElementById(`${itemType}UnorderedList`);
+    let html = '';
+
+    console.log(currItems);
+
+    currItems.forEach(i => {
+        html += `<li onclick="deleteItem(${i.uid}, '${itemType}')" id="${i.uid}" class="dropdown-item"><img src="${i.shop_image}"><p>${i.name}</p></li>`
     });
+
+    type.innerHTML = html;
+}
+
+window.selectSpirit = function (name) {
+    spiritSearchBox.value = name;
+
+    let itemData = spiritItems.find(i => i.name === name);
+
+    spiritDropdown.style.display = "none";
+
+    buildData.items.spirit.push({
+        uid: itemData.id,
+        shop_image: itemData.shop_image,
+        name: itemData.name
+    });
+
+    console.log(buildData);
+    updateUnorderedList(buildData.items.spirit, "spirit");
 };
 
 spiritSearchBox.addEventListener("input", window.filterSpiritItems);
@@ -276,6 +313,8 @@ spiritSearchBox.addEventListener("focus", () => {
     renderSpiritList(spiritItems);
     }
 });
+
+
 
 /**
  * @typedef {Object} Hero
