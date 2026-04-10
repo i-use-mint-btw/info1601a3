@@ -94,26 +94,76 @@ window.hideCreateBuildModal = () => {
     createBuildModal.classList.remove("show-modal")
 }
 
+let heroes; 
 async function fetchHeroData() {
     let response = await fetch(`${DEADLOCK_ASSETS_API_URL}/v2/heroes`);
-    const heroes = await response.json();
-    displayHeroCarousel(heroes);
+    heroes = await response.json();
+    heroes = heroes.filter(hero => !hero.in_development && hero.name != "kali");
+    renderList(heroes);
 }
 
-function displayHeroCarousel(heroes) {
-    let html
-    heroes.forEach(h => {
-        html += `
-        <div>
-            <img class="hero-carousel-img" src="${h.images.top_bar_vertical_image}" 
-            style="border-color: rgb(255, 255, 255);
-            border-width: 1px;
-            background-image: url("${h.images.background_image_webp}");">
-        </div>`
-    })
+window.filterItems = function () {
+  if (!heroes.length) return;
 
-    document.querySelector(".glider").innerHTML = html
+  const value = searchBox.value.toLowerCase();
+
+  const filtered = heroes.filter(h =>
+    h.name.toLowerCase().includes(value) && h.name != "Kali"
+  );
+
+  renderList(filtered);
+};
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".dropdown")) {
+    dropdown.style.display = "none";
+  }
+});
+
+function renderList(list) {
+  let html = "";
+
+  list.forEach(h => {
+    html += `
+      <div class="dropdown-item" data-name="${h.name}">
+        <img 
+          class="hero-carousel-img" 
+          src="${h.images.top_bar_vertical_image}"
+          style="width: 1.5em; height: auto; border: none"
+        >
+        <span>${h.name}</span>
+      </div>
+    `;
+  });
+
+  dropdown.innerHTML = html;
+  dropdown.style.display = list.length ? "block" : "none";
+
+  document.querySelectorAll(".dropdown-item").forEach(item => {
+    item.addEventListener("click", () => {
+      if(item.dataset.name.toLowerCase() !== "kali")
+        selectHero(item.dataset.name);
+    });
+  });
 }
+
+window.selectHero = function(name) {
+  searchBox.value = name;
+  let heroData = heroes.filter(hero => hero.name == name);
+  dropdown.style.display = "none";
+
+  console.log("Selected Hero ID", heroData[0].id);
+  console.log("Selected hero:", name); //attach to build
+};
+
+let dropdown = document.getElementById("dropdownList");
+let searchBox = document.getElementById("searchBox");
+
+searchBox.addEventListener("input", filterItems);
+
+searchBox.addEventListener("focus", () => {
+  if (heroes.length) renderList(heroes);
+});
 
 /**
  * @typedef {Object} Hero

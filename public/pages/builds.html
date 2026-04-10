@@ -228,6 +228,31 @@
 			border-style: solid;
 			transition: transform 0.3s ease;
 		}
+		.dropdown {
+			position: relative;
+			width: 250px;
+		}
+		.dropdown-list {
+			position: absolute;
+			width: 100%;
+			max-height: 200px;
+			overflow-y: auto;
+			background: #111;
+			border: 1px solid #efdebf;
+			display: none;
+			z-index: 1000;
+		}
+		.dropdown-item {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 6px;
+			cursor: pointer;
+		}
+
+		.dropdown-item:hover {
+			background: #222;
+		}
 	</style>
 </head>
 
@@ -308,16 +333,18 @@
 					</div>
 					<div class="form-row">
 						<label for="heroSelection">Select a Hero:</label>
-						<div class="glider-contain">
-							<div class="glider">
-
-							</div>
-
-							<button aria-label="Previous" class="glider-prev">«</button>
-							<button aria-label="Next" class="glider-next">»</button>
-							<div role="tablist" class="dots"></div>
+						<div class="dropdown">
+						<input type="text" id="searchBox" placeholder="Search..."/>
+						<div id="dropdownList" class="dropdown-list"></div>
 						</div>
 					</div>
+							<!-- <div class="glider">
+
+							</div> -->
+
+							<!-- <button aria-label="Previous" class="glider-prev">«</button>
+							<button aria-label="Next" class="glider-next">»</button>
+							<div role="tablist" class="dots"></div> -->
 					<div class="form-row">
 						<div class="item-column">
 							<h3>Spirit</h3>
@@ -369,16 +396,16 @@
 
 		</section>
 		<script>
-			new Glider(document.querySelector('.glider'), {
-				slidesToShow: 2,
-				slidesToScroll: 2,
-				draggable: true,
-				dots: '.dots',
-				arrows: {
-					prev: '.glider-prev',
-					next: '.glider-next'
-				}
-			});
+			// new Glider(document.querySelector('.glider'), {
+			// 	slidesToShow: 2,
+			// 	slidesToScroll: 2,
+			// 	draggable: true,
+			// 	dots: '.dots',
+			// 	arrows: {
+			// 		prev: '.glider-prev',
+			// 		next: '.glider-next'
+			// 	}
+			// });
 		</script>
 	</main>
 </body>
