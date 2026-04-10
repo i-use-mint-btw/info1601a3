@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="../style.css">
 	<link rel="icon" type="image/x-icon" href="../assets/(Ghostly) MARK_Filled.png">
 	<script src="../scripts/builds.js" defer type="module"></script>
+	<link rel="stylesheet" href="../glider.css">
+	<script src="../scripts/glider.js"></script>
 	<style>
 		body {
 			margin: 0px;
@@ -219,6 +221,13 @@
 		.show-modal {
 			display: block;
 		}
+
+		.hero-carousel-img {
+			width: 90px;
+			border-radius: 15px;
+			border-style: solid;
+			transition: transform 0.3s ease;
+		}
 	</style>
 </head>
 
@@ -236,7 +245,7 @@
 
 	<main>
 		<aside id="builds-list">
-			<div class="build-card">
+			<div class="build-card" onclick="onBuildCardClick()">
 				<div>
 					<h2>Build Name</h2>
 				</div>
@@ -299,11 +308,15 @@
 					</div>
 					<div class="form-row">
 						<label for="heroSelection">Select a Hero:</label>
-						<select class="form-input" id="heroSelection">
-							<option>Hero Name 1</option>
-							<option>Hero Name 2</option>
-							<option>Hero Name 3</option>
-						</select>
+						<div class="glider-contain">
+							<div class="glider">
+
+							</div>
+
+							<button aria-label="Previous" class="glider-prev">«</button>
+							<button aria-label="Next" class="glider-next">»</button>
+							<div role="tablist" class="dots"></div>
+						</div>
 					</div>
 					<div class="form-row">
 						<div class="item-column">
@@ -355,21 +368,19 @@
 			</div>
 
 		</section>
+		<script>
+			new Glider(document.querySelector('.glider'), {
+				slidesToShow: 2,
+				slidesToScroll: 2,
+				draggable: true,
+				dots: '.dots',
+				arrows: {
+					prev: '.glider-prev',
+					next: '.glider-next'
+				}
+			});
+		</script>
 	</main>
-	<script>
-		const createBuildModal = document.getElementById("modal-form")
-
-		function showCreateBuildModal() {
-			createBuildModal.classList.add("show-modal")
-			createBuildModal.classList.remove("hide-modal")
-		}
-
-		function hideCreateBuildModal() {
-			createBuildModal.classList.add("hide-modal")
-			createBuildModal.classList.remove("show-modal")
-		}
-
-	</script>
 </body>
 
 </html>

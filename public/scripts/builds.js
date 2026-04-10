@@ -3,6 +3,7 @@ import { createBuild, getBuilds } from "./data.js"
 import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import { DEADLOCK_ASSETS_API_URL } from "./constants.js";
 
 // /** @type {Build} **/
 // const testBuild = {
@@ -30,8 +31,11 @@ window.addEventListener('DOMContentLoaded', () => {
     onAuthStateChanged(auth, onload)
 })
 
-document.querySelector(".build-card").addEventListener("click", () => {
-    console.log("Pressed a build card")
+document.getElementById("close").addEventListener("click", e => e.preventDefault())
+
+document.getElementById("save-build").addEventListener("click", e => {
+    e.preventDefault()
+    console.log("Build saved")
 })
 
 
@@ -46,7 +50,7 @@ async function renderBuildCards(builds, username) {
 /** @param {Build} build **/
 function createBuildCard(build) {
     return `
-    <div class="build-card">
+    <div class="build-card" onclick="onBuildCardClick()">
         <div>
             <h2>${build.name}</h2>
         </div>
@@ -73,18 +77,43 @@ function createItemPreviewList(items) {
     return str
 }
 
-const createBuildModal = document.getElementById("modal-form")
-
-function showCreateBuildModal() {
-    createBuildModal.classList.add("show-modal")
-    createBuildModal.classList.remove("hide-modal")
+window.onBuildCardClick = () => {
+    // Render that entire build here
 }
 
-function hideCreateBuildModal() {
+const createBuildModal = document.getElementById("modal-form")
+
+window.showCreateBuildModal = () => {
+    createBuildModal.classList.add("show-modal")
+    createBuildModal.classList.remove("hide-modal")
+    fetchHeroData()
+}
+
+window.hideCreateBuildModal = () => {
     createBuildModal.classList.add("hide-modal")
     createBuildModal.classList.remove("show-modal")
 }
 
+async function fetchHeroData() {
+    let response = await fetch(`${DEADLOCK_ASSETS_API_URL}/v2/heroes`);
+    const heroes = await response.json();
+    displayHeroCarousel(heroes);
+}
+
+function displayHeroCarousel(heroes) {
+    let html
+    heroes.forEach(h => {
+        html += `
+        <div>
+            <img class="hero-carousel-img" src="${h.images.top_bar_vertical_image}" 
+            style="border-color: rgb(255, 255, 255);
+            border-width: 1px;
+            background-image: url("${h.images.background_image_webp}");">
+        </div>`
+    })
+
+    document.querySelector(".glider").innerHTML = html
+}
 
 /**
  * @typedef {Object} Hero
