@@ -17,7 +17,7 @@ async function init() {
     onAuthStateChanged(auth, async (user) => {
         if (!user) {
             alert("Login required");
-            window.location.href = "../pages/login/login.html";
+            window.location.href = "../login/login.html";
             return;
         }
 
