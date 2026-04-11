@@ -14,7 +14,7 @@ export function renderBuildCards(builds) {
 
     html += builds.map((build, index) => `
         <div class="build-card" onclick="onBuildCardClick(${index})">
-            <h2>${build.name}</h2>
+            <h2 class="build-name">${build.name}</h2>
             <div class="build-items">
             <div class="hero-icon-container">
                 <img class="hero-icon" src="${build.hero.photoUrl}">	
