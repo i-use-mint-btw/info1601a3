@@ -1,12 +1,12 @@
 import { auth, db } from "./globals.js";
-import { collection, getDoc, addDoc, getDocs, deleteDoc, query , where } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import { collection, getDoc, addDoc, getDocs, deleteDoc, query, where } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
 const buildCol = collection(db, "builds")
 
 export async function getBuilds(renderFun, user) {
     const q = query(buildCol, where("createdBy", "==", user));
     const buildSnapshot = await getDocs(q);
-    const buildList = buildSnapshot.docs.map(doc => doc.data());
+    const buildList = buildSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
     renderFun(buildList, await getUsername())
 }
 
@@ -20,17 +20,19 @@ export async function createBuild(build) {
 }
 
 /** @returns {Promise<boolean>} **/
-export async function deleteBuild(auth, buildID) {
-    const buildDoc = await getDoc(buildCol);
+export async function deleteBuild(buildID) {
+    const q = query(buildCol, where("createdBy", "==", auth.currentUser.uid));
+    const buildSnapshot = await getDocs(q);
 
-    if (buildDoc.exists() && buildDoc.data().userID === auth.currentUser.uid) {
-        await deleteDoc(buildDoc);
-        console.log("Build deleted successfully");
-        return true;
-    } else {
-        console.log("Build not found or you don't have permission to delete it");
-        return false;
+    for (const buildDoc of buildSnapshot.docs) {
+        if (buildDoc.exists() && buildDoc.id === buildID && buildDoc.data().createdBy === auth.currentUser.uid) {
+            await deleteDoc(buildDoc.ref);
+            console.log("Build deleted successfully");
+            return
+        }
     }
+
+    console.log("Build not found or you don't have permission to delete it");
 }
 
 export async function createUser(id, username) {

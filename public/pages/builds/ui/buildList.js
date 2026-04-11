@@ -1,3 +1,6 @@
+import { deleteBuild, getBuilds } from "../../../scripts/data.js";
+import { auth } from "../../../scripts/globals.js";
+
 let currentBuilds = []
 
 export function renderBuildCards(builds) {
@@ -20,6 +23,7 @@ export function renderBuildCards(builds) {
                     ${build.items.slice(0, 3).map(i => `<img src="${i.photoUrl}">`).join("")}
                 </div>
             </div>
+            <button class="delete-build-btn" onclick="onDeleteBuildClick(${index})">X</button>
         </div>`
     ).join("");
 
@@ -27,11 +31,21 @@ export function renderBuildCards(builds) {
 }
 
 window.onBuildCardClick = (index) => {
-    highlightSelected(index+1);
+    highlightSelected(index + 1);
 
     const build = currentBuilds[index];
     renderBuildPreview(build);
 };
+
+window.onDeleteBuildClick = (index) => {
+    async function fn() {
+        const build = currentBuilds[index]
+        await deleteBuild(build.id)
+        await getBuilds(renderBuildCards, auth.currentUser.uid);
+    }
+
+    fn()
+}
 
 function renderBuildPreview(build) {
     const previewBox = document.querySelector(".preview-box");

@@ -1,3 +1,7 @@
+* {
+    overflow-x: hidden;
+}
+
 body {
     color: #efdebf;
     background-image: url("../../assets/Background_Buildings.png");
@@ -5,6 +9,10 @@ body {
     height: auto;
     background-size: auto;
     font-family: sans-serif;
+}
+
+.navigation-link {
+    font-size: 16px;
 }
 
 div,
@@ -22,7 +30,7 @@ div,
 }
 
 .signup-container {
-    margin-top: 150px;
+    margin: 150px 0 50px 0;
     min-width: 300px;
     max-width: 400px;
     padding: 30px 35px 30px 30px;

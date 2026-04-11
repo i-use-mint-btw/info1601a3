@@ -18,7 +18,7 @@ header {
 main {
 	display: flex;
 	flex: 1;
-	overflow:hidden;
+	overflow: hidden;
 }
 
 #builds-list {
@@ -32,22 +32,22 @@ main {
 	overflow-y: scroll;
 }
 
-#builds-list::-webkit-scrollbar{
-    width: 12px;
+#builds-list::-webkit-scrollbar {
+	width: 12px;
 
 }
 
-#builds-list::-webkit-scrollbar-track{
-    width: 12px;
-    border-radius: 8px;
-    background-color: transparent;
-    border: none;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+#builds-list::-webkit-scrollbar-track {
+	width: 12px;
+	border-radius: 8px;
+	background-color: transparent;
+	border: none;
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
 }
 
 #builds-list::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: #2f444267;
+	border-radius: 8px;
+	background-color: #2f444267;
 }
 
 #build-details {
@@ -65,10 +65,35 @@ main {
 	border-radius: 12px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 	width: 300px;
 	margin-bottom: 5px;
 	cursor: pointer;
+	position: relative;
+}
+
+.delete-build-btn {
+	position: absolute;
+	top: 18px;
+	right: 6px;
+
+	background: rgba(180, 50, 50, 0.15);
+	color: #ff6b6b;
+
+	border: 1px solid rgba(255, 107, 107, 0.4);
+	border-radius: 6px;
+
+	font-size: 18px;
+	padding: 2px 8px;
+
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+
+.delete-build-btn:hover {
+	background: rgba(255, 107, 107, 0.2);
+	color: #ff4d4d;
+	transform: scale(1.1);
 }
 
 .build-card:hover {
@@ -306,37 +331,37 @@ form {
 }
 
 .preview-box {
-    padding: 1.5rem;
-    border-radius: 12px;
-    background: rgba(20, 20, 20, 0.9);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+	padding: 1.5rem;
+	border-radius: 12px;
+	background: rgba(20, 20, 20, 0.9);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
 }
 
 .preview-hero {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }
 
 .hero-icon-large {
-    width: 80px;
-    height: auto;
-    border-radius: 8px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+	width: 80px;
+	height: auto;
+	border-radius: 8px;
+	border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .preview-hero h3 {
-    font-size: 1.4rem;
-    margin: 0;
+	font-size: 1.4rem;
+	margin: 0;
 }
 
 .preview-items {
-    display: flex;
-    gap: 1rem;
+	display: flex;
+	gap: 1rem;
 }
 
 .item-section {
@@ -344,61 +369,62 @@ form {
 }
 
 .item-section h4 {
-    margin-bottom: 0.4rem;
-    font-size: 0.95rem;
-    opacity: 0.8;
+	margin-bottom: 0.4rem;
+	font-size: 0.95rem;
+	opacity: 0.8;
 }
 
 .item-row {
 	width: 100%;
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
 }
 
 .item-row img {
-    width: 48px;
-    height: 48px;
-    border-radius: 6px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    cursor: pointer;
+	width: 48px;
+	height: 48px;
+	border-radius: 6px;
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+	cursor: pointer;
 }
 
 .item-row img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+	transform: scale(1.1);
+	box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 .preview-meta {
-    font-size: 0.8rem;
-    opacity: 0.6;
+	font-size: 0.8rem;
+	opacity: 0.6;
 }
 
 .build-card {
-    transition: transform 0.15s ease, background 0.15s ease;
-    cursor: pointer;
+	transition: transform 0.15s ease, background 0.15s ease;
+	cursor: pointer;
 }
 
 .build-card:hover {
-    transform: translateY(-2px);
+	transform: translateY(-2px);
 }
 
 .build-card.active {
-    background: rgba(255, 255, 255, 0.08);
-    border-left: 3px solid 	#72947f;
+	background: rgba(255, 255, 255, 0.08);
+	border-left: 3px solid #72947f;
 }
 
 .preview-box {
-    animation: fadeIn 0.2s ease;
+	animation: fadeIn 0.2s ease;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+	from {
+		opacity: 0;
+		transform: translateY(5px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
