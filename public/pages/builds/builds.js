@@ -23,7 +23,7 @@ async function init() {
 
         state.items = await fetchAllItems();
 
-        getBuilds(renderBuildCards);
+        getBuilds(renderBuildCards, user.uid);
         initModal(initHeroDropdown);
         initItemDropdowns();
     });

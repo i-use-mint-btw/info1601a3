@@ -1,11 +1,12 @@
 import { auth, db } from "./globals.js";
-import { collection, getDoc, addDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import { collection, getDoc, addDoc, getDocs, deleteDoc, query , where } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
 const buildCol = collection(db, "builds")
 
-export async function getBuilds(renderFun) {
-    const buildSnapshot = await getDocs(buildCol);
-    const buildList = buildSnapshot.docs.map(doc => doc.data())
+export async function getBuilds(renderFun, user) {
+    const q = query(buildCol, where("createdBy", "==", user));
+    const buildSnapshot = await getDocs(q);
+    const buildList = buildSnapshot.docs.map(doc => doc.data());
     renderFun(buildList, await getUsername())
 }
 
