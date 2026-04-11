@@ -1,5 +1,5 @@
 {
-  "name": "Deadlock Builds",
+  "name": "DeadlockBuilder",
   "short_name": "Builds",
   "start_url": "/index.html",
   "display": "standalone",
@@ -8,12 +8,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/assets/icon-192.png",
+      "src": "/assets/manifest_192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/assets/icon-512.png",
+      "src": "/assets/manifest_512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
