@@ -23,7 +23,7 @@ export function renderBuildCards(builds) {
                     ${build.items.slice(0, 3).map(i => `<img src="${i.photoUrl}">`).join("")}
                 </div>
             </div>
-            <button class="delete-build-btn" onclick="onDeleteBuildClick(${index})">X</button>
+            <button class="delete-build-btn" onclick="onDeleteBuildClick(event, ${index})">X</button>
         </div>`
     ).join("");
 
@@ -37,14 +37,11 @@ window.onBuildCardClick = (index) => {
     renderBuildPreview(build);
 };
 
-window.onDeleteBuildClick = (index) => {
-    async function fn() {
-        const build = currentBuilds[index]
-        await deleteBuild(build.id)
-        await getBuilds(renderBuildCards, auth.currentUser.uid);
-    }
-
-    fn()
+window.onDeleteBuildClick = async (event, index) => {
+    event.stopPropagation()
+    const build = currentBuilds[index]
+    await deleteBuild(build.id)
+    await getBuilds(renderBuildCards, auth.currentUser.uid);
 }
 
 function renderBuildPreview(build) {
