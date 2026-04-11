@@ -15,6 +15,7 @@
     }
 
     .main-heroes-div {
+        padding-top: 40px;
         gap: 15px;
         width: 80%;
         background-color: #222021e7;
