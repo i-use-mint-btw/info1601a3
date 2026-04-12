@@ -6,6 +6,25 @@ import {
   where,
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import { logout } from "../../scripts/auth.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+    init();
+});
+
+async function init() {
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          document.getElementById("sign-out").innerHTML = "Sign Out";
+          document.getElementById("sign-out").addEventListener('click', () => {
+            logout();
+            window.location.href = "../login/login.html";
+          })
+          return;
+        } else document.getElementById("sign-out").innerHTML = "Log in / Sign Up";
+    });
+}
 
 let heroes = [];
 
@@ -94,48 +113,3 @@ inputBox.addEventListener("input", () => {
 
 fetchHeroData();
 const heroesRef = collection(db, "heroes");
-
-let filter = false;
-
-//Querying for Favorited Heroes
-document.getElementById("filterButton").onclick = async function () {
-  if (filter === true) {
-    filter = false;
-    displayHeroes(heroes, "");
-    return;
-  } else filter = true;
-
-  if (auth.currentUser == null) {
-    alert("You Must Be Logged In For This Feature!");
-    return;
-  }
-
-  let favorites = [];
-
-  const q = query(heroesRef, where("user_id", "==", auth.currentUser.uid));
-
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    favorites.push(doc.data());
-  });
-
-  const favoriteHeroes = heroes.filter(h =>
-    favorites.some(f => f.hero_id === h.id)
-  );
-
-  const insertCards = document.querySelector(".cards");
-  let html = '';
-
-  favoriteHeroes.forEach((h, index) => {
-    html += `
-      <div onclick="showMore(${index})">
-        <img src="${h.images.top_bar_vertical_image}" 
-        style="border-color: rgb(255, 255, 255);
-        border-width: 1px;
-        background-image: url("${h.images.background_image_webp}");">
-      </div>
-      `;
-  });
-
-  insertCards.innerHTML = html;
-}

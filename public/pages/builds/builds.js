@@ -1,6 +1,6 @@
 import { auth } from "../../scripts/globals.js";
-import { getBuilds } from "../../scripts/data.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import { getBuilds } from "../../scripts/data.js";
 import { serverTimestamp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js"
 import { createBuild } from "../../scripts/data.js";
 import { state } from "./state.js";
@@ -8,9 +8,14 @@ import { fetchAllItems, fetchHeroes } from "./api.js";
 import { renderBuildCards } from "./ui/buildList.js";
 import { initModal } from "./ui/modal.js";
 import { createDropdown } from "./ui/dropdown.js";
+import { logout } from "../../scripts/auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     init();
+    document.getElementById("sign-out").addEventListener('click', () => {
+        logout();
+        window.location.href = "../login/login.html";
+    })
 });
 
 async function init() {

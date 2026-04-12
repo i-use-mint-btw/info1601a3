@@ -10,7 +10,8 @@ export async function register(username, email, password) {
     try {
         const userCredentials = await createUserWithEmailAndPassword(auth, email, password)
         await createUser(userCredentials.user.uid, username)
-        window.location.href = "/pages/login.html"
+        console.log("changing page");
+        window.location.href = "../../index.html"
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
